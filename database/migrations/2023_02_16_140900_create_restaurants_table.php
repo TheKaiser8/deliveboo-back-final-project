@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('address', 150);
             $table->string('vat_number', 11);
             $table->string('image')->nullable();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
