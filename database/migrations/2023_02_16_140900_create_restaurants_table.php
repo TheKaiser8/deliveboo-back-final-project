@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('vat_number', 11);
             $table->string('image')->nullable();
-            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,9 +31,9 @@ return new class extends Migration
      */
     public function down()
     {
-        // Schema::table('restaurants', function (Blueprint $table) {
-        //     $table->dropForeign(['user_id']);
-        // });
+        Schema::table('restaurants', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('restaurants');
     }
 };
