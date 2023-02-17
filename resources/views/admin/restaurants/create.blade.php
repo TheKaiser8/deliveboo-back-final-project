@@ -58,7 +58,7 @@
                 <h6>Cucine</h6>
                 @foreach ($kitchens as $kitchen)
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="{{$kitchen->id}}" {{ in_array($kitchen->id, old('kitchens', []) ) ? 'checked' : ''}} name="kitchens[]" value="{{$kitchen->id}}" >
+                        <input class="form-check-input" type="checkbox" id="{{$kitchen->id}}" name="kitchens[]" value="{{$kitchen->id}}" {{ in_array($kitchen->id, old('kitchens', []) ) ? 'checked' : ''}}>
                         <label class="form-check-label" for="{{$kitchen->id}}">{{$kitchen->name}}</label>
                     </div>
                 @endforeach

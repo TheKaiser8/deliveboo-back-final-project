@@ -65,15 +65,8 @@ class RestaurantController extends Controller
 
         $new_restaurant ->save();
 
-        @dd($data);
-
-        if(array_key_exists('kitchens', $data)){
-            $new_restaurant->kitchens()->sync($data['kitchens']);
-        }
-
-        // $new_restaurant->kitchens()->sync($data['kitchens']);
+        $new_restaurant->kitchens()->sync($data['kitchens']);
         
-
         return redirect()->route('admin.restaurants.index');
     }
 
