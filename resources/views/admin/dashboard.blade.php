@@ -1,10 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <h1>Dashboard Layout</h1>
-</div>
-
-{{-- ciao --}}
-{{-- ciao --}}
+    <div class="container">
+        <h1>Dashboard</h1>
+    </div>
 @endsection

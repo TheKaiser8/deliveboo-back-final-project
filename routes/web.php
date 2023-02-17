@@ -19,12 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
-    
-Route::resource('restaurants', RestaurantController::class);
+
+    Route::resource('restaurants', RestaurantController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
