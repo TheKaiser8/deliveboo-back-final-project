@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Kitchen;
-use App\Http\Requests\StoreKitchenRequest;
-use App\Http\Requests\UpdateKitchenRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Order;
+use App\Http\Requests\StoreOrderRequest;
+use App\Http\Requests\UpdateOrderRequest;
 
-class KitchenController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class KitchenController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreKitchenRequest  $request
+     * @param  \App\Http\Requests\StoreOrderRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreKitchenRequest $request)
+    public function store(StoreOrderRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class KitchenController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kitchen  $kitchen
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Kitchen $kitchen)
+    public function show(Order $order)
     {
         //
     }
@@ -53,10 +54,10 @@ class KitchenController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kitchen  $kitchen
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kitchen $kitchen)
+    public function edit(Order $order)
     {
         //
     }
@@ -64,11 +65,11 @@ class KitchenController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateKitchenRequest  $request
-     * @param  \App\Models\Kitchen  $kitchen
+     * @param  \App\Http\Requests\UpdateOrderRequest  $request
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateKitchenRequest $request, Kitchen $kitchen)
+    public function update(UpdateOrderRequest $request, Order $order)
     {
         //
     }
@@ -76,10 +77,10 @@ class KitchenController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kitchen  $kitchen
+     * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kitchen $kitchen)
+    public function destroy(Order $order)
     {
         //
     }
