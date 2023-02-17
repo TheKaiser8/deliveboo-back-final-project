@@ -13,7 +13,7 @@ class StoreRestaurantRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class StoreRestaurantRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:100',
+            'address' => 'required|string|max:150',
+            'vat_number' => 'required|string|size:11',
+            'image' => 'nullable|image|max:2048'
         ];
     }
 }

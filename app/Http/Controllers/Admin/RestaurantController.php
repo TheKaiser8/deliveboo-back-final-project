@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
+use App\Models\Kitchen;
 use App\Http\Requests\StoreRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
 {
@@ -29,7 +32,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        $kitchens = Kitchen::all();
+        return view('admin.restaurants.create', compact('kitchens'));
     }
 
     /**
@@ -40,7 +44,37 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
-        //
+        $userId = Auth::id();
+
+        $data = $request->validated();
+
+        $new_restaurant = new Restaurant();
+
+        $new_restaurant->user_id = $userId;
+
+        $new_restaurant->fill($data);
+
+        // $new_restaurant->slug= Str::slug($new_restaurant->name);
+
+        //upload immagini
+        if(isset($data['image'])) {
+
+            //salvo il path dell'immagine a db
+            $new_restaurant->image = Storage::disk('public')->put('uploads', $data['image']);
+        };
+
+        $new_restaurant ->save();
+
+        @dd($data);
+
+        if(array_key_exists('kitchens', $data)){
+            $new_restaurant->kitchens()->sync($data['kitchens']);
+        }
+
+        // $new_restaurant->kitchens()->sync($data['kitchens']);
+        
+
+        return redirect()->route('admin.restaurants.index');
     }
 
     /**
