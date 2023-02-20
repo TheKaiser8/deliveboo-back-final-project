@@ -131,7 +131,7 @@ class RestaurantController extends Controller
             $restaurant->kitchens()->sync([]);
         }
 
-        return redirect()->route('admin.restaurants.index')->with('message', "Il progetto $old_name è stato aggiornato!");
+        return redirect()->route('admin.restaurants.index')->with('message', "Il ristorante $old_name è stato aggiornato!");
     }
 
     /**
@@ -142,6 +142,14 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        //
+        $old_name = $restaurant->name;
+
+        // if ($restaurant->image) {
+        //     Storage::disk('public')->delete($restaurant->image);
+        // }
+
+        $restaurant->delete();
+
+        return redirect()->route('admin.restaurants.index')->with('message', "Il ristorante $old_name è stato cancellato!");
     }
 }
