@@ -49,7 +49,7 @@ class ProductController extends Controller
 
         $data = $request->validated();
 
-        $new_product= new Product();
+        $new_product = new Product();
 
         $new_product->restaurant_id = $restaurant->id;
 
@@ -77,7 +77,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
