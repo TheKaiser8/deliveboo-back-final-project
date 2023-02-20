@@ -16,8 +16,10 @@
                 </ul>
             </div> 
         @endif  --}}
-        <form action="{{ route('admin.restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data" class="mb-5"> {{-- se non usassi l'enctype mi verrebbe restituito solo il nome dell'immagine --}}
+        <form action="{{ route('admin.restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data" class="mb-5">
         @csrf
+        @method('PUT')
+        
             <div class="mb-3">
                <label for="name" class="form-label"><h6>Nome*</h6></label>
                <input type="text" class="form-control" id="name" name="name" placeholder="Inserisci il nome del tuo ristorante" value="{{ old('name', $restaurant->name) }}">
@@ -62,7 +64,7 @@
                             
                         @else
                             {{-- per avere già flaggate le eventuali "kitchens" già associate: --}}
-                            <input class="form-check-input" type="checkbox" id="{{ $kitchen->id }}" name="restaurants[]" value="{{ $kitchen->id }}" {{ $restaurant->kitchens->contains($kitchen->id) ? 'checked' : '' }}>
+                            <input class="form-check-input" type="checkbox" id="{{ $kitchen->id }}" name="kitchens[]" value="{{ $kitchen->id }}" {{ $restaurant->kitchens->contains($kitchen->id) ? 'checked' : '' }}>
                         @endif
                             <label class="form-check-label" for="{{$kitchen->id}}">{{$kitchen->name}}</label>
                     </div>

@@ -103,7 +103,35 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->validated();
+
+        $old_name = $restaurant->name;
+
+        // $restaurant->slug = Str::slug($data['name'], '-');
+
+        // if (isset($data['image'])) {
+        //     // controllo che verifica se è presente l'immagine e la cancella di default se già inserita
+        //     if ($restaurant->image) {
+        //         Storage::disk('public')->delete($restaurant->image);
+        //     }
+        //     $data['image'] = Storage::disk('public')->put('uploads', $data['image']);
+        // }
+
+        // controllo che verifica se viene settata la checkbox per NON caricare alcuna immagine in fase di modifica del progetto
+        // if (isset($data['no_image']) && $restaurant->image) {
+        //     Storage::disk('public')->delete($restaurant->image);
+        //     $restaurant->image = null;
+        // }
+
+        $restaurant->update($data);
+
+        if (isset($data['kitchens'])) {
+            $restaurant->kitchens()->sync($data['kitchens']);
+        } else {
+            $restaurant->kitchens()->sync([]);
+        }
+
+        return redirect()->route('admin.restaurants.index')->with('message', "Il progetto $old_name è stato aggiornato!");
     }
 
     /**
