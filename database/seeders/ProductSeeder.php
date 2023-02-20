@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Product;
+use App\Models\Restaurant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -17,7 +18,7 @@ class ProductSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // Metodo truncate() per ripopolare da zero il seeder (Product in questo caso) ogni volta che viene rilanciato
+        
         Schema::disableForeignKeyConstraints();
         Product::truncate();
         Schema::enableForeignKeyConstraints();
@@ -43,5 +44,6 @@ class ProductSeeder extends Seeder
             $new_product->price = $faker->numerify('##.##');
             $new_product->save();
         }
+
     }
 }

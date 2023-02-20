@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     })->name('dashboard');
 
     Route::resource('restaurants', RestaurantController::class);
+    Route::resource('products', ProductController::class);
 });
 
 require __DIR__ . '/auth.php';
