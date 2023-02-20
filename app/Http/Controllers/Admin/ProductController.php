@@ -132,6 +132,14 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $old_name = $product->name;
+
+        // if ($product->image) {
+        //     Storage::disk('public')->delete($product->image);
+        // }
+
+        $product->delete();
+
+        return redirect()->route('admin.products.index')->with('message', "Il prodotto $old_name è stato cancellato!");
     }
 }

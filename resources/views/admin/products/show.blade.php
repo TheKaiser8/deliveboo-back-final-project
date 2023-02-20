@@ -26,11 +26,11 @@
             </div>
         </div>
     </div>
-    {{-- <form action="{{ route('admin.products.destroy', $product)}}" method="POST" class="d-inline-block">
+    <form action="{{ route('admin.products.destroy', $product)}}" method="POST" class="d-inline-block">
         @csrf
         @method('DELETE')
 
         <button type="submit" class="btn btn-danger">Sì, cancella</button>
-    </form> --}}
+    </form>
     <a href="{{ route('admin.products.index') }}" class="btn btn-secondary my-3">Torna ai prodotti</a>
 @endsection
