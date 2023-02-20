@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call([
-            // UserSeeder::class,
+            // userSeeder utilizzato per generare valori per testare relazioni database
+            // UserSeeder::class, 
             RestaurantSeeder::class,
             KitchenSeeder::class,
             ProductSeeder::class,

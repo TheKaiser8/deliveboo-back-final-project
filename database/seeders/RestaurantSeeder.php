@@ -26,9 +26,9 @@ class RestaurantSeeder extends Seeder
 
 
         $restaurants = ['La pizzeria', 'La trattoria', 'Trancio', 'Soralella', 'MC donald', 'Burger King', 'Trapezzino', 'Le calandre'];
-        foreach(User::all() as $user){
+        foreach(User::all() as $key=>$user){
             $new_restaurant = new Restaurant();
-            $new_restaurant->name = $restaurants[rand(0,7)];
+            $new_restaurant->name = $restaurants[$key];
             $new_restaurant->address = $faker->address();
             $new_restaurant->vat_number = $faker->numerify('###########');
             $new_restaurant->image = $faker->imageUrl(640, 480, 'food', true);
