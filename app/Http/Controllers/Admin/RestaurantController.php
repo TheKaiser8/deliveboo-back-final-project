@@ -20,9 +20,9 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-      $userId = Auth::id();
-      $restaurants = Restaurant::where('user_id', $userId)->get();
-      return view('admin.restaurants.index',compact('restaurants'));
+        $userId = Auth::id();
+        $restaurants = Restaurant::where('user_id', $userId)->get();
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
@@ -57,16 +57,16 @@ class RestaurantController extends Controller
         // $new_restaurant->slug= Str::slug($new_restaurant->name);
 
         //upload immagini
-        if(isset($data['image'])) {
+        if (isset($data['image'])) {
 
             //salvo il path dell'immagine a db
             $new_restaurant->image = Storage::disk('public')->put('uploads', $data['image']);
         };
 
-        $new_restaurant ->save();
+        $new_restaurant->save();
 
         $new_restaurant->kitchens()->sync($data['kitchens']);
-        
+
         return redirect()->route('admin.restaurants.index');
     }
 
@@ -78,7 +78,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurants.show', compact('restaurant'));
     }
 
     /**
@@ -89,7 +89,9 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        //
+        $kitchens = Kitchen::all();
+
+        return view('admin.restaurants.edit', compact('restaurant', 'kitchens'));
     }
 
     /**
