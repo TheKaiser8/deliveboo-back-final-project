@@ -8,6 +8,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -42,7 +43,30 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        
+        $userId = Auth::id();
+
+        $restaurant = Restaurant::where('user_id', $userId)->first();
+
+        $data = $request->validated();
+
+        $new_product= new Product();
+
+        $new_product->restaurant_id = $restaurant->id;
+
+        $new_product->fill($data);
+
+        // $new_product->slug= Str::slug($new_product->name);
+
+        //upload immagini
+        if (isset($data['image'])) {
+
+            //salvo il path dell'immagine a db
+            $new_product->image = Storage::disk('public')->put('uploads', $data['image']);
+        };
+
+        $new_product->save();
+
+        return redirect()->route('admin.products.index');
     }
 
     /**

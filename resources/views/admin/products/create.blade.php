@@ -32,8 +32,8 @@
             <div class="mb-3 w-25">
                 <label for="typology" class="form-label"><h6>Tipologia*</h6></label>
                 <select name="typology" id="typology" class="form-select">
-                    <option value="cibo" {{ old('typology') === 'cibo' ? 'selected' : '' }}>Cibo</option>
-                    <option value="bevanda" {{ old('typology') === 'bevanda' ? 'selected' : ''}}>Bevanda</option>
+                    <option value="cibo" {{ old('typology') == 'cibo' ? 'selected' : ''}}>Cibo</option>
+                    <option value="bevanda" {{ old('typology') == 'bevanda' ? 'selected' : ''}}>Bevanda</option>
                 </select>
             </div>
             <div class="mb-3 w-25">
@@ -56,12 +56,12 @@
 
              <div class="mb-3">
                 <label for="price" class="form-label"><h6>Prezzo*</h6></label>
-                <input type="number" class="form-control" id="price" name="price" min="0" value="{{ old('price') }}" step=".01" max="9999.99" placeholder="00.00">
+                <input type="number" class="form-control" id="price" name="price" min="0" value="{{ old('price') }}" step=".01" max="9999.99" placeholder="00,00">
             </div>
 
             <div class="mb-3 w-25">
                 <label for="image" class="form-label"><h6>Immagine Piatto</h6></label> 
-                {{-- image preview --}}
+                
                 <div>
                     <img id="output" width="100" class="mb-2"/>
                     <script>
