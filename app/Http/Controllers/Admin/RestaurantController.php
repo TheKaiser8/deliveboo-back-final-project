@@ -78,6 +78,13 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+
+        $user = Auth::id();
+        $url = url()->previous();
+        if($restaurant->user_id != $user){
+            return redirect($url);
+        }
+
         return view('admin.restaurants.show', compact('restaurant'));
     }
 
