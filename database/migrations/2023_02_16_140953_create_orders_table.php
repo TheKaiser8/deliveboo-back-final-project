@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone_number', 30)->unique();
             $table->dateTime('delivery_date');
             $table->dateTime('creation_date');
-            $table->decimal('total_price', 6,2);
+            $table->decimal('total_price', 5,2);
             $table->timestamps();
         });
     }

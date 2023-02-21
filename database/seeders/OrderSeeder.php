@@ -29,7 +29,7 @@ class OrderSeeder extends Seeder
         $new_order->phone_number=$faker->phoneNumber();
         $new_order->delivery_date = $faker->dateTime();
         $new_order->creation_date = $faker->dateTime();
-        $new_order->total_price = $faker->numerify('####.##');
+        $new_order->total_price = $faker->numerify('###.##');
         $new_order->save();
        }
     }
