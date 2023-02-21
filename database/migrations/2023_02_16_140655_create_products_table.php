@@ -18,13 +18,12 @@ return new class extends Migration
             $table->string('name', 100);
             $table->boolean('is_available', 1);
             $table->string('image')->nullable();
-            $table->string('typology', 30)->nullable();
-            $table->string('dish', 30);
-            $table->text('description', 500)->nullable();
-            $table->text('ingredients', 1000)->nullable();
-            $table->decimal('price', 5, 2);
+            $table->string('typology', 30);
+            $table->text('description', 500);
+            $table->text('ingredients', 1000);
+            $table->decimal('price', 4, 2);
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

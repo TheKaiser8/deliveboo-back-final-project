@@ -29,8 +29,8 @@ class ProductSeeder extends Seeder
             'Panino vegano', 'Panino vegetariano al formaggio', 'Formaggio grigliato', 'Torta paradiso', 'Tiramisù', 'Hot Dog', 'Caprese', 'Spaghetti al ragù'
         ];
 
-        $typologies = ['Cibo', 'Bevanda'];
-        $dishes = ['Primo', 'Secondo', 'Contorno', 'Dessert'];
+        $typologies = ['panini', 'bevanda', 'dessert', 'pizza', 'sushi', 'vegetariano', 'alcolici'];
+        
 
         foreach (Restaurant::all() as $restaurant) {
             for ($i = 0; $i < 5; $i++) {
@@ -40,7 +40,8 @@ class ProductSeeder extends Seeder
                 $new_product->is_available = $faker->numberBetween(0, 1);
                 $new_product->image = $faker->imageUrl(640, 480, 'food', true);
                 $new_product->typology = $typologies[rand(0, count($typologies) - 1)];
-                $new_product->dish = $dishes[rand(0, count($dishes) - 1)];
+                $new_product->description = $faker->paragraph(2);
+                $new_product->ingredients = $faker->paragraph(1);
                 $new_product->price = $faker->numerify('##.##');
                 $new_product->restaurant_id = $restaurant->id;
                 $new_product->save();

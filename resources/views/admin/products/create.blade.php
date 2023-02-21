@@ -33,16 +33,11 @@
                 <label for="typology" class="form-label"><h6>Tipologia*</h6></label>
                 <select name="typology" id="typology" class="form-select">
                     <option value="cibo" {{ old('typology') == 'cibo' ? 'selected' : ''}}>Cibo</option>
-                    <option value="bevanda" {{ old('typology') == 'bevanda' ? 'selected' : ''}}>Bevanda</option>
-                </select>
-            </div>
-            <div class="mb-3 w-25">
-                <label for="dish" class="form-label"><h6>Portata*</h6></label>
-                <select name="dish" id="dish" class="form-select">
-                    <option value="primo" {{ old('dish') === 'primo' ? 'selected' : '' }}>Primo</option>
-                    <option value="secondo" {{ old('dish') === 'secondo' ? 'selected' : ''}}>Secondo</option>
-                    <option value="contorno" {{ old('dish') === 'contorno' ? 'selected' : ''}}>Contorno</option>
-                    <option value="dessert" {{ old('dish') === 'dessert' ? 'selected' : ''}}>Dessert</option>
+                    <option value="dessert" {{ old('typology') == 'dessert' ? 'selected' : ''}}>Dessert</option>
+                    <option value="pizza" {{ old('typology') == 'pizza' ? 'selected' : ''}}>Pizza</option>
+                    <option value="sushi" {{ old('typology') == 'sushi' ? 'selected' : ''}}>Sushi</option>
+                    <option value="vegetariano" {{ old('typology') == 'vegetariano' ? 'selected' : ''}}>Vegetariano</option>
+                    <option value="alcolici" {{ old('typology') == 'alcolici' ? 'selected' : ''}}>Alcolici</option>
                 </select>
             </div>
             <div class="mb-3">
