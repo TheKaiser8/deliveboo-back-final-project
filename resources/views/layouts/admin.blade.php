@@ -102,6 +102,15 @@
                     Ristoranti
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.products') ? 'bg-secondary' : '' }}"
+                    href="{{route('admin.products.index')}}"
+                  >
+                    <i class="fa-regular fa-file-code fa-lg fa-fw"></i>
+                    Prodotti
+                  </a>
+                </li>
               </ul>
             </div>
           </nav>

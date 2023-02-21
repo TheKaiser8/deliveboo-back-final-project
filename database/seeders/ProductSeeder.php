@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        
+
         Schema::disableForeignKeyConstraints();
         Product::truncate();
         Schema::enableForeignKeyConstraints();
@@ -32,17 +32,17 @@ class ProductSeeder extends Seeder
         $typologies = ['Cibo', 'Bevanda'];
         $dishes = ['Primo', 'Secondo', 'Contorno', 'Dessert'];
 
-        foreach(Restaurant::all() as $restaurant){
+        foreach (Restaurant::all() as $restaurant) {
             for ($i = 0; $i < 5; $i++) {
 
                 $new_product = new Product();
-                $new_product->name = $products[rand(0,count($products )-1)];
+                $new_product->name = $products[rand(0, count($products) - 1)];
                 $new_product->is_available = $faker->numberBetween(0, 1);
                 $new_product->image = $faker->imageUrl(640, 480, 'food', true);
-                $new_product->typology = $typologies[0];
-                $new_product->dish = $dishes[0];
+                $new_product->typology = $typologies[rand(0, count($typologies) - 1)];
+                $new_product->dish = $dishes[rand(0, count($dishes) - 1)];
                 $new_product->price = $faker->numerify('##.##');
-                $new_product->restaurant_id =$restaurant->id;
+                $new_product->restaurant_id = $restaurant->id;
                 $new_product->save();
             }
         }

@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
 @section('page-title')
-    Menù 
+    Prodotti 
 @endsection
 
 @section('content')
-    <h2>il tuo menù</h2>
-    {{-- <a href="{{ route('admin.restaurants.create')}}" class="btn btn-primary">crea ristorante</a> --}}
+    <h2>I tuoi prodotti</h2>
+    <a href="{{ route('admin.products.create')}}" class="btn btn-primary">Crea prodotto</a>
 @endsection
