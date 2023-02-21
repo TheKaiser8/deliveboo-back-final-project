@@ -15,6 +15,10 @@
         <div class="card-body">
             <h4 class="card-title fw-bold">{{ $restaurant->name}}</h4>
             <h5 class="card-subtitle mb-2 text-muted">{{ $restaurant->id }}</h5>
+            <p>{{ $restaurant->city }}</p>
+            <p>{{ $restaurant->street_address}}</p>
+            <p>{{ $restaurant->postal_code }}</p>
+            <p>{{ $restaurant->vat_number }}</p>
         </div>
     </div>
     <form action="{{ route('admin.restaurants.destroy', $restaurant)}}" method="POST" class="d-inline-block">

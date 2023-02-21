@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             // userSeeder utilizzato per generare valori per testare relazioni database
-            // UserSeeder::class,
+            UserSeeder::class,
             RestaurantSeeder::class,
             KitchenSeeder::class,
             ProductSeeder::class,

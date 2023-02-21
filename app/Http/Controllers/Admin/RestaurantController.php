@@ -54,7 +54,7 @@ class RestaurantController extends Controller
 
         $new_restaurant->fill($data);
 
-        // $new_restaurant->slug= Str::slug($new_restaurant->name);
+        $new_restaurant->slug= Str::slug($new_restaurant->name . '-' . $new_restaurant->city . '-' . $new_restaurant->postal_code);
 
         //upload immagini
         if (isset($data['image'])) {
@@ -107,7 +107,7 @@ class RestaurantController extends Controller
 
         $old_name = $restaurant->name;
 
-        // $restaurant->slug = Str::slug($data['name'], '-');
+        $restaurant->slug = Str::slug($data['name'] . '-' . $data['city'] . '-' . $data['postal_code']);
 
         // if (isset($data['image'])) {
         //     // controllo che verifica se è presente l'immagine e la cancella di default se già inserita

@@ -25,10 +25,12 @@ class UpdateRestaurantRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:100',
-            'address' => 'required|string|max:150',
+            'city' => 'required|string|max:50',
+            'street_address' => 'required|string|max:50',
+            'postal_code' => 'required|string|size:5',
             'vat_number' => 'required|string|size:11',
             'image' => 'nullable|image|max:2048',
-            'kitchens' => 'required|exists:kitchens,id'
+            'kitchens'=> 'required|exists:kitchens,id'
         ];
     }
 }

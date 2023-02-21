@@ -25,8 +25,16 @@
                <input type="text" class="form-control" id="name" name="name" placeholder="Inserisci il nome del tuo ristorante" value="{{old('name')}}">
             </div>
             <div class="mb-3">
-                <label for="address" class="form-label"><h6>Indirizzo*</h6></label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Dove si trova il tuo ristorante?" value="{{old('address')}}">
+                <label for="city" class="form-label"><h6>Città*</h6></label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Inserisci la città del tuo ristorante" value="{{old('city')}}">
+            </div>
+            <div class="mb-3">
+                <label for="street_address" class="form-label"><h6>Indirizzo*</h6></label>
+                <input type="text" class="form-control" id="street_address" name="street_address" placeholder="Inserisci l'indirizzo del tuo ristorante" value="{{old('street_address')}}">
+            </div>
+            <div class="mb-3">
+                <label for="postal_code" class="form-label"><h6>Codice Postale*</h6></label>
+                <input type="text" class="form-control" id="postal_code" name="postal_code" placeholder="Inserisci il codice postale" value="{{old('postal_code')}}">
             </div>
             <div class="mb-3">
                 <label for="vat_number" class="form-label"><h6>Partita IVA*</h6></label>

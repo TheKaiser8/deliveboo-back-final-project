@@ -55,8 +55,6 @@ class ProductController extends Controller
 
         $new_product->fill($data);
 
-        // $new_product->slug= Str::slug($new_product->name);
-
         //upload immagini
         if (isset($data['image'])) {
 
