@@ -75,6 +75,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $user = Auth::id();
+        $url = url()->previous();
+        if($product->restaurant->user_id != $user){
+            return redirect($url);
+        }
+
         return view('admin.products.show', compact('product'));
     }
 
