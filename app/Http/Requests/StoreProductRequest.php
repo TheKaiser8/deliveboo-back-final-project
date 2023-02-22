@@ -31,11 +31,11 @@ class StoreProductRequest extends FormRequest
             'image' => 'nullable|image|max:2048',
             'typology' => [
                 'required',
-                Rule::in(['panini', 'bevanda', 'dessert', 'pizza', 'sushi', 'vegetariano', 'alcolici'])
+                Rule::in(['panini', 'pizza', 'sushi', 'vegetariano', 'dessert', 'bevande', 'alcolici'])
             ],
-            'description' => 'nullable|string|max:500',
-            'ingredients' => 'nullable|string|max:1000',
-            'price' => 'required|between:0.01,999.99|decimal:2'
+            'description' => 'required|string|max:500|min:10',
+            'ingredients' => 'required|string|max:500|min:10',
+            'price' => 'required|numeric|between:0.00,99.99'
         ];
     }
 }

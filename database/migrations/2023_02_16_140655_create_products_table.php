@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('typology', 30);
             $table->text('description', 500);
-            $table->text('ingredients', 1000);
+            $table->text('ingredients', 500);
             $table->decimal('price', 4, 2);
             $table->timestamps();
-        }); 
+        });
     }
 
     /**

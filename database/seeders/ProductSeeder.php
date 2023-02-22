@@ -29,8 +29,8 @@ class ProductSeeder extends Seeder
             'Panino vegano', 'Panino vegetariano al formaggio', 'Formaggio grigliato', 'Torta paradiso', 'Tiramisù', 'Hot Dog', 'Caprese', 'Spaghetti al ragù'
         ];
 
-        $typologies = ['panini', 'bevanda', 'dessert', 'pizza', 'sushi', 'vegetariano', 'alcolici'];
-        
+        $typologies = ['panini', 'pizza', 'sushi', 'vegetariano', 'dessert', 'bevande', 'alcolici'];
+
 
         foreach (Restaurant::all() as $restaurant) {
             for ($i = 0; $i < 5; $i++) {
