@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 // creo rotta (/api/restaurants) che restituisca tutti i dati dei ristoranti in formato JSON
 Route::get('restaurants', [RestaurantController::class, 'index']);
+
+// rotta /api/restaurants/nome-ristorante-città-codice-postale (slug d'esempio)
+Route::get('restaurants/{slug}', [RestaurantController::class, 'show']);

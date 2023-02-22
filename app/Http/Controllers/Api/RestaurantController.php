@@ -14,4 +14,16 @@ class RestaurantController extends Controller
 
         return $restaurants;
     }
+
+    public function show($slug)
+    {
+        try {
+            $restaurant = Restaurant::where('slug', $slug)->with('products', 'kitchens')->firstOrFail();
+            return $restaurant;
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+            return response([
+                'error' => '404 Restaurant not found'
+            ], 404);
+        }
+    }
 }
