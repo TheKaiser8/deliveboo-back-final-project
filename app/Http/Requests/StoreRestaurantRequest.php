@@ -32,12 +32,7 @@ class StoreRestaurantRequest extends FormRequest
             'postal_code' => 'required|string|size:5',
             'vat_number' => 'required|string|size:11',
             'image' => 'nullable|image|max:2048',
-            'kitchens'=> [
-                'required',
-                Rule::in(['italiano', 'internazionale', 'cinese', 'giapponese', 'messicano', 'indiano', 'coreano', 'francese', 'thailandese', 'australiano']),
-                'exists:kitchens,id'
-            ]
-
+            'kitchens'=> 'required'
         ];
     }
 }
