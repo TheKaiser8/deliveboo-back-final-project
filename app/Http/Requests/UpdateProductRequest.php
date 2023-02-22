@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateProductRequest extends FormRequest
@@ -27,8 +29,10 @@ class UpdateProductRequest extends FormRequest
             'name' => 'required|string|max:100',
             'is_available' => 'required|boolean',
             'image' => 'nullable|image|max:2048',
-            'typology' => 'required|string|max:30',
-            'dish' => 'required|string|max:30',
+            'typology' => [
+                'required',
+                Rule::in(['panini', 'bevanda', 'dessert', 'pizza', 'sushi', 'vegetariano', 'alcolici'])
+            ],
             'description' => 'nullable|string|max:500',
             'ingredients' => 'nullable|string|max:1000',
             'price' => 'required|between:0.01,999.99|decimal:2'
