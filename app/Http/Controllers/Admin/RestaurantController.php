@@ -30,7 +30,7 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Restaurant $restaurant)
     {
         $kitchens = Kitchen::all();
         return view('admin.restaurants.create', compact('kitchens'));
@@ -96,6 +96,13 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
+
+        $user = Auth::id();
+        $url = url()->previous();
+        if($restaurant->user_id != $user){
+            return redirect($url);
+        }
+
         $kitchens = Kitchen::all();
 
         return view('admin.restaurants.edit', compact('restaurant', 'kitchens'));
