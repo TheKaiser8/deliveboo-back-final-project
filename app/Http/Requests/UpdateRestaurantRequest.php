@@ -32,7 +32,7 @@ class UpdateRestaurantRequest extends FormRequest
             'postal_code' => 'required|string|size:5',
             'vat_number' => 'required|string|size:11',
             'image' => 'nullable|image|max:2048',
-            'kitchens'=> 'required'
+            'kitchens'=> 'required|exists:kitchens,id'
                 
         ];
     }
