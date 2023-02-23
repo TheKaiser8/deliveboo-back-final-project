@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->string('city', 50);
-            $table->string('street_address', 50);
+            $table->string('street_address', 100);
             $table->string('postal_code', 5);
             $table->string('vat_number', 11);
             $table->string('image')->nullable();

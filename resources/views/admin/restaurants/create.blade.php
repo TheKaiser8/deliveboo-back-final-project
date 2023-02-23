@@ -5,10 +5,9 @@
 @endsection
 
 @section('content')
-    <h2>Crea un Nuovo Ristorante</h2>
     <div class="container mt-5">
         <h1>Crea un Nuovo Ristorante</h1>
-        <form action="{{route('admin.restaurants.store')}}" method="POST" enctype="multipart/form-data" class="mb-5"> {{-- se non usassi l'enctype mi verrebbe restituito solo il nome dell'immagine --}}
+        <form action="{{route('admin.restaurants.store')}}" method="POST" enctype="multipart/form-data" class="mb-5">
         @csrf
             {{-- campo nome --}}
             <div class="mb-3">
@@ -51,12 +50,11 @@
                 @enderror
             </div>
             {{-- campo immagine --}}
-            <div class="mb-3 w-25">
+            <div class="mb-3">
                 <label for="image" class="form-label"><h6>Copertina Ristorante</h6></label> 
-
                 {{-- image preview --}}
                 <div>
-                    <img id="output" width="100" class="mb-2"/>
+                    <img id="output" width="150" class="mb-2"/>
                     <script>
                         let loadFile = function(event) {
                             let reader = new FileReader();
@@ -69,24 +67,27 @@
                     </script>
                 </div>
                 {{-- /preview immagine  --}}
-                <input type="file" class="form-control" id="image" name="image" value="{{old('image')}}" onchange="loadFile(event)">
+                <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" value="{{old('image')}}" onchange="loadFile(event)">
+                @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             {{-- campo cucine --}}
             <div class="mb-3">
-                <h6>Cucine*</h6>
+                <h6>Cucina/e*</h6>
                 @foreach ($kitchens as $kitchen)
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="{{$kitchen->id}}" name="kitchens[]" value="{{$kitchen->id}}" {{ in_array($kitchen->id, old('kitchens', []) ) ? 'checked' : ''}}>
-                        <label class="form-check-label @error('kitchens') is-invalid @enderror" for="{{$kitchen->id}}">{{$kitchen->name}}</label>
+                        <input class="form-check-input @error('kitchens') is-invalid @enderror" type="checkbox" id="{{$kitchen->id}}" name="kitchens[]" value="{{$kitchen->id}}" {{ in_array($kitchen->id, old('kitchens', []) ) ? 'checked' : ''}}>
+                        <label class="form-check-label" for="{{$kitchen->id}}">{{$kitchen->name}}</label>
                     </div>
                 @endforeach
                 @error('kitchens')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div>
-                <a href="{{ route('admin.restaurants.index')}}" class="btn btn-primary">Ritorna al  tuo ristorante</a>
+            <div class="mb-3">
                 <button type="submit" class="btn btn-success">Conferma</button>
+                <a href="{{ route('admin.restaurants.index')}}" class="btn btn-primary">Ritorna al  tuo ristorante</a>
             </div>
         </form>
     </div>

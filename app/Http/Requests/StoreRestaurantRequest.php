@@ -28,11 +28,35 @@ class StoreRestaurantRequest extends FormRequest
         return [
             'name' => 'required|string|max:100',
             'city' => 'required|string|max:50',
-            'street_address' => 'required|string|max:50',
-            'postal_code' => 'required|string|size:5',
-            'vat_number' => 'required|string|size:11',
+            'street_address' => 'required|string|max:100',
+            'postal_code' => 'required|numeric|digits:5',
+            'vat_number' => 'required|numeric|digits:11',
             'image' => 'nullable|image|max:2048',
-            'kitchens'=> 'required|exists:kitchens,id'
+            'kitchens' => 'required|exists:kitchens,id'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Attenzione: il nome è richiesto.',
+            'name.string' => 'Attenzione: il nome deve essere una sequenza di caratteri alfabetici, numerici e/o speciali.',
+            'name.max' => 'Attenzione: il nome non può superare i 100 caratteri, spazi inclusi.',
+            'city.required' => 'Attenzione: la città è richiesta.',
+            'city.string' => 'Attenzione: la città deve essere una sequenza di caratteri alfabetici, numerici e/o speciali.',
+            'city.max' => 'Attenzione: la città non può superare i 50 caratteri, spazi inclusi.',
+            'street_address.required' => 'Attenzione: l\'indirizzo è richiesto.',
+            'street_address.string' => 'Attenzione: l\'indirizzo deve essere una sequenza di caratteri alfabetici, numerici e/o speciali.',
+            'street_address.max' => 'Attenzione: l\'indirizzo non può superare i 100 caratteri, spazi inclusi.',
+            'postal_code.required' => 'Attenzione: il codice postale è richiesto.',
+            'postal_code.numeric' => 'Attenzione: il codice postale deve essere una sequenza di 5 cifre.',
+            'postal_code.digits' => 'Attenzione: il codice postale deve contenere esattamente 5 cifre.',
+            'vat_number.required' => 'Attenzione: il numero di partita IVA è richiesto.',
+            'vat_number.numeric' => 'Attenzione: il numero di partita IVA deve essere una sequenza di 11 cifre.',
+            'vat_number.digits' => 'Attenzione: il numero di partita IVA deve contenere esattamente 11 cifre.',
+            'image.image' => 'Attenzione: il file deve essere un\'immagine (jpg, jpeg, png, bmp, gif, svg, o webp).',
+            'image.uploaded' => 'Attenzione: la dimensione dell\'immagine non può superare i 2 MB.',
+            'kitchens.required' => 'Attenzione: è richiesta almeno una tipologia di cucina.'
         ];
     }
 }

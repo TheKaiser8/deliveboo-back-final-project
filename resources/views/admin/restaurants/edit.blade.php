@@ -51,12 +51,11 @@
                 @enderror
             </div>
             {{-- campo immagine --}}
-            <div class="mb-3 w-25">
+            <div class="mb-3">
                 <label for="image" class="form-label"><h6>Copertina Ristorante</h6></label>
-
                 {{-- image preview --}}
                 <div>
-                    <img id="output" width="100" class="mb-2"/>
+                    <img id="output" width="150" class="mb-2"/>
                     <script>
                         let loadFile = function(event) {
                             let reader = new FileReader();
@@ -70,10 +69,13 @@
                 </div>
                 {{-- /preview immagine  --}}
                 <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" value="{{ old('image', $restaurant->image) }}" onchange="loadFile(event)">
+                @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             {{-- campo cucine --}}
             <div class="mb-3">
-                <h6>Cucine</h6>
+                <h6>Cucina/e*</h6>
                 @foreach ($kitchens as $kitchen)
                     <div class="form-check form-check-inline">
                         @if( $errors->any() )
@@ -90,7 +92,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <div>
+            <div class="mb-3">
                 <button type="submit" class="btn btn-success">Conferma</button>
                 <a href="{{ route('admin.restaurants.index')}}" class="btn btn-primary">Ritorna al tuo ristorante</a>
             </div>
