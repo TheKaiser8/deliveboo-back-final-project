@@ -111,24 +111,24 @@
                     Prodotti
                   </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a
-                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.products') ? 'bg-secondary' : '' }}"
-                    href="{{route('admin.products.index')}}"
+                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.orders') ? 'bg-secondary' : '' }}"
+                    href="{{route('admin.orders.index')}}"
                   >
                     <i class="fa-solid fa-truck-fast fa-lg fa-fw"></i>
                     Ordini
                   </a>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                   <a
-                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.products') ? 'bg-secondary' : '' }}"
-                    href="{{route('admin.products.index')}}"
+                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.stats') ? 'bg-secondary' : '' }}"
+                    href="{{route('admin.stats.index')}}"
                   >
                     <i class="fa-solid fa-chart-line fa-lg fa-fw"></i>
                     Statistiche
                   </a>
-                </li>
+                </li> --}}
               </ul>
             </div>
           </nav>
