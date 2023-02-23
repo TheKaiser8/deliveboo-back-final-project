@@ -34,9 +34,15 @@
       <header
         class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow"
       >
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/"
+      @if( Auth::user()->restaurant )
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.restaurants.show') }}"
           >DeliveBoo</a
         >
+      @else
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.restaurants.create') }}"
+          >DeliveBoo</a
+        >
+      @endif
         <button
           class="navbar-toggler position-absolute d-md-none collapsed"
           type="button"
@@ -86,15 +92,6 @@
               <ul class="nav flex-column">
                 <li class="nav-item">
                   <a
-                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
-                    href="{{route('admin.dashboard')}}"
-                  >
-                    <i class="fa-solid fa-house fa-lg fa-fw"></i>
-                    Dashboard
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
                     class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.restaurants') ? 'bg-secondary' : '' }}"
                     href="{{route('admin.restaurants.index')}}"
                   >
@@ -102,15 +99,17 @@
                     Il tuo ristorante
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a
-                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.products') ? 'bg-secondary' : '' }}"
-                    href="{{route('admin.products.index')}}"
-                  >
-                    <i class="fa-solid fa-burger fa-lg fa-fw"></i>
-                    Prodotti
-                  </a>
-                </li>
+                @if(Auth::user()->restaurant)
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.products') ? 'bg-secondary' : '' }}"
+                      href="{{route('admin.products.index')}}"
+                    >
+                      <i class="fa-solid fa-burger fa-lg fa-fw"></i>
+                      Prodotti
+                    </a>
+                  </li>
+                @endif
                 {{-- <li class="nav-item">
                   <a
                     class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.orders') ? 'bg-secondary' : '' }}"
