@@ -20,11 +20,12 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        if (!Auth::user()->restaurant) {
-            $url = url()->previous();
-            return redirect($url);
-        }
-        return view('admin.restaurants.index');
+        // if (!Auth::user()->restaurant) {
+        //     return redirect()->route('admin.restaurants.create');
+        // }
+        // return view('admin.restaurants.index');
+        $url = url()->previous();
+        return redirect($url);
     }
 
     /**
@@ -34,6 +35,10 @@ class RestaurantController extends Controller
      */
     public function create(Restaurant $restaurant)
     {
+        if (Auth::user()->restaurant) {
+            $url = url()->previous();
+            return redirect($url);
+        }
         $kitchens = Kitchen::all();
         return view('admin.restaurants.create', compact('kitchens'));
     }
@@ -60,7 +65,6 @@ class RestaurantController extends Controller
 
         //upload immagini
         if (isset($data['image'])) {
-
             //salvo il path dell'immagine a db
             $new_restaurant->image = Storage::disk('public')->put('uploads', $data['image']);
         };
@@ -80,10 +84,8 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        $user = Auth::id();
-        $url = url()->previous();
-        if ($restaurant->user_id != $user) {
-            return redirect($url);
+        if (!Auth::user()->restaurant) {
+            return redirect()->route('admin.restaurants.create');
         }
         return view('admin.restaurants.show', compact('restaurant'));
     }
@@ -96,7 +98,6 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-
         $user = Auth::id();
         $url = url()->previous();
         if ($restaurant->user_id != $user) {
@@ -145,7 +146,7 @@ class RestaurantController extends Controller
             $restaurant->kitchens()->sync([]);
         }
 
-        return redirect()->route('admin.restaurants.index')->with('message', "Il ristorante $old_name è stato aggiornato!");
+        return redirect()->route('admin.restaurants.show', $restaurant)->with('message', "Il ristorante $old_name è stato aggiornato!");
     }
 
     /**
