@@ -89,7 +89,7 @@
                     class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}"
                     href="{{route('admin.dashboard')}}"
                   >
-                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>
+                    <i class="fa-solid fa-house fa-lg fa-fw"></i>
                     Dashboard
                   </a>
                 </li>
@@ -98,8 +98,8 @@
                     class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.restaurants') ? 'bg-secondary' : '' }}"
                     href="{{route('admin.restaurants.index')}}"
                   >
-                    <i class="fa-regular fa-file-code fa-lg fa-fw"></i>
-                    Ristoranti
+                    <i class="fa-solid fa-utensils fa-lg fa-fw"></i>
+                    Il tuo ristorante
                   </a>
                 </li>
                 <li class="nav-item">
@@ -107,8 +107,26 @@
                     class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.products') ? 'bg-secondary' : '' }}"
                     href="{{route('admin.products.index')}}"
                   >
-                    <i class="fa-regular fa-file-code fa-lg fa-fw"></i>
+                    <i class="fa-solid fa-burger fa-lg fa-fw"></i>
                     Prodotti
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.products') ? 'bg-secondary' : '' }}"
+                    href="{{route('admin.products.index')}}"
+                  >
+                    <i class="fa-solid fa-truck-fast fa-lg fa-fw"></i>
+                    Ordini
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.products') ? 'bg-secondary' : '' }}"
+                    href="{{route('admin.products.index')}}"
+                  >
+                    <i class="fa-solid fa-chart-line fa-lg fa-fw"></i>
+                    Statistiche
                   </a>
                 </li>
               </ul>
