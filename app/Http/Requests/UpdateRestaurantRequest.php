@@ -30,7 +30,7 @@ class UpdateRestaurantRequest extends FormRequest
             'city' => 'required|string|max:50',
             'street_address' => 'required|string|max:100',
             'postal_code' => 'required|numeric|digits:5',
-            'vat_number' => 'required|numeric|digits:11',
+            'vat_number' => 'required|unique:restaurants|numeric|digits:11',
             'image' => 'nullable|image|max:2048',
             'kitchens' => 'required|exists:kitchens,id'
         ];
