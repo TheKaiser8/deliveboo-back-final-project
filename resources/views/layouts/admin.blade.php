@@ -35,7 +35,7 @@
         class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow"
       >
       @if( Auth::user()->restaurant )
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.restaurants.show') }}"
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.restaurants.show', Auth::user()->restaurant) }}"
           >DeliveBoo</a
         >
       @else
@@ -90,15 +90,17 @@
           >
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a
-                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.restaurants') ? 'bg-secondary' : '' }}"
-                    href="{{route('admin.restaurants.index')}}"
-                  >
-                    <i class="fa-solid fa-utensils fa-lg fa-fw"></i>
-                    Il tuo ristorante
-                  </a>
-                </li>
+                @if( Auth::user()->restaurant )
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.restaurants') ? 'bg-secondary' : '' }}"
+                      href="{{route('admin.restaurants.show', Auth::user()->restaurant)}}"
+                    >
+                      <i class="fa-solid fa-utensils fa-lg fa-fw"></i>
+                      Il tuo ristorante
+                    </a>
+                  </li>
+                @endif
                 @if(Auth::user()->restaurant)
                   <li class="nav-item">
                     <a
