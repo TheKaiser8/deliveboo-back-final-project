@@ -20,9 +20,11 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $userId = Auth::id();
-        $restaurants = Restaurant::where('user_id', $userId)->get();
-        return view('admin.restaurants.index', compact('restaurants'));
+        if (!Auth::user()->restaurant) {
+            $url = url()->previous();
+            return redirect($url);
+        }
+        return view('admin.restaurants.index');
     }
 
     /**
@@ -54,7 +56,7 @@ class RestaurantController extends Controller
 
         $new_restaurant->fill($data);
 
-        $new_restaurant->slug= Str::slug($new_restaurant->name . '-' . $new_restaurant->city . '-' . $new_restaurant->postal_code);
+        $new_restaurant->slug = Str::slug($new_restaurant->name . '-' . $new_restaurant->city . '-' . $new_restaurant->postal_code);
 
         //upload immagini
         if (isset($data['image'])) {
@@ -67,7 +69,7 @@ class RestaurantController extends Controller
 
         $new_restaurant->kitchens()->sync($data['kitchens']);
 
-        return redirect()->route('admin.restaurants.index');
+        return redirect()->route('admin.restaurants.show', $new_restaurant);
     }
 
     /**
@@ -78,13 +80,11 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-
         $user = Auth::id();
         $url = url()->previous();
-        if($restaurant->user_id != $user){
+        if ($restaurant->user_id != $user) {
             return redirect($url);
         }
-
         return view('admin.restaurants.show', compact('restaurant'));
     }
 
@@ -99,7 +99,7 @@ class RestaurantController extends Controller
 
         $user = Auth::id();
         $url = url()->previous();
-        if($restaurant->user_id != $user){
+        if ($restaurant->user_id != $user) {
             return redirect($url);
         }
 
@@ -164,6 +164,6 @@ class RestaurantController extends Controller
 
         $restaurant->delete();
 
-        return redirect()->route('admin.restaurants.index')->with('message', "Il ristorante $old_name è stato cancellato!");
+        return redirect()->route('admin.restaurants.create')->with('message', "Il ristorante $old_name è stato cancellato!");
     }
 }

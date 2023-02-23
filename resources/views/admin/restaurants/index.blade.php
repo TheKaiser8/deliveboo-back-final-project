@@ -6,5 +6,6 @@
 
 @section('content')
     <h2>Il tuo ristorante</h2>
-    <a href="{{ route('admin.restaurants.create')}}" class="btn btn-primary">crea ristorante</a>
+    <a href="{{ route('admin.restaurants.create')}}" class="btn btn-primary">Crea ristorante</a>
+    <a href="{{ route('admin.restaurants.show', Auth::user()->restaurant)}}" class="btn btn-primary">Mostra ristorante</a>
 @endsection

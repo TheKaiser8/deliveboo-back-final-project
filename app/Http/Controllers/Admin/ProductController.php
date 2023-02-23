@@ -17,12 +17,17 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Restaurant $restaurant,Product $product)
+    public function index(Restaurant $restaurant, Product $product)
     {
-        
+
         $userId = Auth::id();
+        if (!Auth::user()->restaurant) {
+            $url = url()->previous();
+            return redirect($url);
+        }
         $restaurant = Restaurant::where('user_id', $userId)->first();
         $products = Product::where('restaurant_id', $restaurant->id)->get();
+
         return view('admin.products.index', compact('products'));
     }
 
@@ -78,7 +83,7 @@ class ProductController extends Controller
     {
         $user = Auth::id();
         $url = url()->previous();
-        if($product->restaurant->user_id != $user){
+        if ($product->restaurant->user_id != $user) {
             return redirect($url);
         }
 
@@ -96,7 +101,7 @@ class ProductController extends Controller
 
         $user = Auth::id();
         $url = url()->previous();
-        if($product->restaurant->user_id != $user){
+        if ($product->restaurant->user_id != $user) {
             return redirect($url);
         }
 
