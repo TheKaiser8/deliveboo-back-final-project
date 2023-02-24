@@ -86,6 +86,9 @@ class RestaurantController extends Controller
     {
         if (!Auth::user()->restaurant) {
             return redirect()->route('admin.restaurants.create');
+        } elseif (Auth::user()->restaurant != $restaurant) {
+            $url = url()->previous();
+            return redirect($url);
         }
         return view('admin.restaurants.show', compact('restaurant'));
     }
