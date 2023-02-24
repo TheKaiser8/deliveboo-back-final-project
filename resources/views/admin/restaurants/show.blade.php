@@ -15,10 +15,16 @@
         <div class="card-body">
             <h4 class="card-title fw-bold">{{ $restaurant->name}}</h4>
             <div class="mb-2">
-                <strong class="fs-5">{{ $restaurant->city }}</strong>
+                <strong class="text-muted fs-5">{{ $restaurant->city }}</strong>
             </div>
             <p><strong>Indirizzo:</strong> {{ $restaurant->street_address}} - {{ $restaurant->postal_code }}</p>
             <p><strong>Partita IVA:</strong> {{ $restaurant->vat_number }}</p>
+            <div class="mb-3">
+                <strong>Cucina/e:</strong> 
+                @foreach($restaurant->kitchens as $kitchen)
+                    <span class="badge text-bg-primary ms-1">{{ $kitchen->name }}</span>
+                @endforeach
+            </div>
         </div>
     </div>
     <form action="{{ route('admin.restaurants.destroy', $restaurant)}}" method="POST" class="d-inline-block">
