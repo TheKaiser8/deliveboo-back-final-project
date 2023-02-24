@@ -26,12 +26,35 @@
                 @endforeach
             </div>
         </div>
+
+        
     </div>
     <form action="{{ route('admin.restaurants.destroy', $restaurant)}}" method="POST" class="d-inline-block">
         @csrf
         @method('DELETE')
 
-        <button type="submit" class="btn btn-danger my-3">Cancella</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete-{{ $restaurant->id }}"><i class="fa-solid fa-trash"></i></button>
     </form>
-    <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-primary my-3">Modifica</a>
+    <!-- Modale (modalDelete) -->
+    <div class="modal fade" id="modalDelete-{{ $restaurant->id }}" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalDeleteLabel">Cancellazione Ristorante</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">Confermi di voler cancellare definitivamente il ristorante <strong>"{{ $restaurant->name }}"</strong>?</div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                    <form action="{{ route('admin.restaurants.destroy', $restaurant)}}" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger">Sì, cancella</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
 @endsection
