@@ -9,18 +9,27 @@ class Restaurant extends Model
 {
     use HasFactory;
 
-    protected $guarded= ['user_id'];
+    protected $guarded = ['user_id'];
+    protected $appends = ['image_url'];
 
-    public function kitchens(){
-        return $this->belongsToMany(Kitchen::class);
-        
+    // metodo per aggiungere una proprietà al model se non abbiamo una colonna a database con l'obiettivo di restituire l'url completo dell'immagine
+    protected function getImageUrlAttribute()
+    {
+        return $this->image ? asset("storage/$this->image") : 'https://via.placeholder.com/400x200';
     }
 
-    public function user(){
+    public function kitchens()
+    {
+        return $this->belongsToMany(Kitchen::class);
+    }
+
+    public function user()
+    {
         return $this->belongsTo(Users::class);
     }
 
-    public function products(){
+    public function products()
+    {
         return $this->hasMany(Product::class);
     }
 }
