@@ -53,5 +53,6 @@
             </div>
         </div>
     </div>
+    <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
     <a href="{{ route('admin.products.index') }}" class="btn btn-primary my-3">Torna ai prodotti</a>
 @endsection
