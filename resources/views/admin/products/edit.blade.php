@@ -14,7 +14,7 @@
             {{-- campo nome --}}
             <div class="mb-3">
                 <label for="name" class="form-label"><h6>Nome*</h6></label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Inserisci il nome di questo piatto" value="{{old('name', $product->name)}}">
+                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Inserisci il nome di questo piatto" value="{{old('name', $product->name)}}" maxlength="100" required>
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -22,7 +22,7 @@
              {{-- campo disponibilità --}}
              <div class="mb-3 w-25">
                 <label for="is_available" class="form-label"><h6>Disponibilità*</h6></label>
-                <select name="is_available" id="is_available" class="form-select @error('is_available') is-invalid @enderror">
+                <select name="is_available" id="is_available" class="form-select @error('is_available') is-invalid @enderror" required>
                     <option value="1" {{ old('is_available', $product->is_available) == 1 ? 'selected' : ''}}>Disponibile</option>
                     <option value="0" {{ old('is_available', $product->is_available) == 0 ? 'selected' : ''}}>Non Disponibile</option>
                 </select>
@@ -33,7 +33,7 @@
             {{-- campo tipologia --}}
             <div class="mb-3 w-25">
                 <label for="typology" class="form-label"><h6>Tipologia*</h6></label>
-                <select name="typology" id="typology" class="form-select @error('typology') is-invalid @enderror">
+                <select name="typology" id="typology" class="form-select @error('typology') is-invalid @enderror" required>
                     <option value="" selected>Seleziona una tipologia</option>
                     <option value="panini" {{ old('typology', $product->typology) == 'panini' ? 'selected' : ''}}>Panini</option>
                     <option value="pizza" {{ old('typology', $product->typology) == 'pizza' ? 'selected' : ''}}>Pizza</option>
@@ -50,7 +50,7 @@
             {{-- campo descrizione --}}
             <div class="mb-3">
                 <label for="description" class="form-label"><h6>Descrizione Piatto*</h6></label>
-                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5" placeholder="Descrivi il tuo piatto...">{{old('description', $product->description)}}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5" placeholder="Descrivi il tuo piatto..." maxlength="500" required>{{old('description', $product->description)}}</textarea>
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -58,7 +58,7 @@
             {{-- campo ingredienti --}}
             <div class="mb-3">
                 <label for="ingredients" class="form-label @error('ingredients') is-invalid @enderror"><h6>Elenco Ingredienti*</h6></label>
-                <textarea class="form-control" id="ingredients" name="ingredients" rows="5" placeholder="Elenca gli ingedienti del tuo piatto...">{{old('ingredients', $product->ingredients)}}</textarea>
+                <textarea class="form-control" id="ingredients" name="ingredients" rows="5" placeholder="Elenca gli ingedienti del tuo piatto..." maxlength="500" required>{{old('ingredients', $product->ingredients)}}</textarea>
                 @error('ingredients')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -66,7 +66,7 @@
             {{-- campo prezzo --}}
             <div class="mb-3">
                 <label for="price" class="form-label @error('price') is-invalid @enderror"><h6>Prezzo*</h6></label>
-                <input type="number" class="form-control" id="price" name="price" value="{{ old('price', $product->price) }}" min="0" step=".01" max="99.99" placeholder="00,00">
+                <input type="number" class="form-control" id="price" name="price" value="{{ old('price', $product->price) }}" min="0" step=".01" max="99.99" placeholder="00,00" required>
                 @error('price')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
