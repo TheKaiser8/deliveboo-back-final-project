@@ -92,13 +92,14 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+            <div>
+                <button type="submit" class="btn btn-success">Conferma</button>
+                <a href="{{ route('admin.products.index')}}" class="btn btn-primary">Torna ai prodotti</a>
+            </div>
             
-            <button type="submit" class="btn btn-success">Conferma</button>
         </form>
 
-        <div>
-            <a href="{{ route('admin.products.index')}}" class="btn btn-primary">Return to Projects List</a>
-        </div>
+        
         
     </div>
 @endsection
