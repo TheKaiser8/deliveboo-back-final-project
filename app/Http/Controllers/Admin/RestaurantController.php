@@ -127,13 +127,13 @@ class RestaurantController extends Controller
 
         $restaurant->slug = Str::slug($data['name'] . '-' . $data['city'] . '-' . $data['postal_code']);
 
-        // if (isset($data['image'])) {
-        //     // controllo che verifica se è presente l'immagine e la cancella di default se già inserita
-        //     if ($restaurant->image) {
-        //         Storage::disk('public')->delete($restaurant->image);
-        //     }
-        //     $data['image'] = Storage::disk('public')->put('uploads', $data['image']);
-        // }
+        if (isset($data['image'])) {
+            // controllo che verifica se è presente l'immagine e la cancella di default se già inserita
+            if ($restaurant->image) {
+                Storage::disk('public')->delete($restaurant->image);
+            }
+            $data['image'] = Storage::disk('public')->put('uploads', $data['image']);
+        }
 
         // controllo che verifica se viene settata la checkbox per NON caricare alcuna immagine in fase di modifica del progetto
         // if (isset($data['no_image']) && $restaurant->image) {
