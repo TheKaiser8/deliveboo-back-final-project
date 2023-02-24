@@ -87,7 +87,6 @@
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Conferma</button>
-                <a href="{{ route('admin.restaurants.index')}}" class="btn btn-primary">Ritorna al  tuo ristorante</a>
             </div>
         </form>
     </div>
