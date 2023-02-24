@@ -15,7 +15,6 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Titolo</th>
                         <th scope="col">Tipologia</th>
                         <th scope="col">Disponibilità</th>
@@ -26,7 +25,6 @@
                 <tbody>
                     @foreach ($products as $product)
                         <tr>
-                            <td>{{ $product->id }}</td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->typology}}</td>
                             <td>{{ $product->is_available == 1 ? 'Disponibile' : 'Non disponibile'}}</td>
