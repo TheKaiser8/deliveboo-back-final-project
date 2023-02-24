@@ -22,10 +22,6 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/restaurant', function () {
-        return view('admin.restaurant.show');
-    })->name('restaurant');
-
     Route::resource('restaurants', RestaurantController::class);
     Route::resource('products', ProductController::class);
 
