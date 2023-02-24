@@ -10,9 +10,17 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded= [];
+    protected $guarded = [];
+    protected $appends = ['image_url'];
 
-    public function restaurant(){
+    // metodo per aggiungere una proprietà al model se non abbiamo una colonna a database con l'obiettivo di restituire l'url completo dell'immagine
+    protected function getImageUrlAttribute()
+    {
+        return $this->image ? asset("storage/$this->image") : 'https://via.placeholder.com/400x200';
+    }
+
+    public function restaurant()
+    {
         return $this->belongsTo(Restaurant::class);
     }
 }
