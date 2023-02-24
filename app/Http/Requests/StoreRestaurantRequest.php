@@ -52,6 +52,7 @@ class StoreRestaurantRequest extends FormRequest
             'postal_code.numeric' => 'Attenzione: il codice postale deve essere una sequenza di 5 cifre.',
             'postal_code.digits' => 'Attenzione: il codice postale deve contenere esattamente 5 cifre.',
             'vat_number.required' => 'Attenzione: il numero di partita IVA è richiesto.',
+            'vat_number.unique' => 'Attenzione: questo numero di partita IVA è già stato registrato.',
             'vat_number.numeric' => 'Attenzione: il numero di partita IVA deve essere una sequenza di 11 cifre.',
             'vat_number.digits' => 'Attenzione: il numero di partita IVA deve contenere esattamente 11 cifre.',
             'image.image' => 'Attenzione: il file deve essere un\'immagine (jpg, jpeg, png, bmp, gif, svg, o webp).',
