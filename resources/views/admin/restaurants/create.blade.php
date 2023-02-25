@@ -12,7 +12,7 @@
             {{-- campo nome --}}
             <div class="mb-3">
                <label for="name" class="form-label"><h6>Nome*</h6></label>
-               <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Inserisci il nome del tuo ristorante" value="{{old('name')}}">
+               <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Inserisci il nome del tuo ristorante" value="{{old('name')}}" maxlength="100" required>
                @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -20,7 +20,7 @@
             {{-- campo città --}}
             <div class="mb-3">
                 <label for="city" class="form-label"><h6>Città*</h6></label>
-                <input type="text" class="form-control @error('city') is-invalid @enderror" id="city" name="city" placeholder="Inserisci la città del tuo ristorante" value="{{old('city')}}">
+                <input type="text" class="form-control @error('city') is-invalid @enderror" id="city" name="city" placeholder="Inserisci la città del tuo ristorante" value="{{old('city')}}" maxlength="50" required>
                 @error('city')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -28,7 +28,7 @@
             {{-- campo indirizzo --}}
             <div class="mb-3">
                 <label for="street_address" class="form-label"><h6>Indirizzo*</h6></label>
-                <input type="text" class="form-control @error('street_address') is-invalid @enderror" id="street_address" name="street_address" placeholder="Inserisci l'indirizzo del tuo ristorante" value="{{old('street_address')}}">
+                <input type="text" class="form-control @error('street_address') is-invalid @enderror" id="street_address" name="street_address" placeholder="Inserisci l'indirizzo del tuo ristorante" value="{{old('street_address')}}" maxlength="100" required>
                 @error('street_address')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -36,7 +36,7 @@
             {{-- campo codice postale --}}
             <div class="mb-3">
                 <label for="postal_code" class="form-label"><h6>Codice Postale*</h6></label>
-                <input type="text" class="form-control @error('postal_code') is-invalid @enderror" id="postal_code" name="postal_code" placeholder="Inserisci il codice postale" value="{{old('postal_code')}}">
+                <input type="text" class="form-control @error('postal_code') is-invalid @enderror" id="postal_code" name="postal_code" placeholder="Inserisci il codice postale" value="{{old('postal_code')}}" minlength="5" maxlength="5" required>
                 @error('postal_code')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
@@ -44,7 +44,7 @@
             {{-- campo partita iva --}}
             <div class="mb-3">
                 <label for="vat_number" class="form-label"><h6>Partita IVA*</h6></label>
-                <input type="text" class="form-control @error('vat_number') is-invalid @enderror" id="vat_number" name="vat_number" placeholder="Inserisci la partita IVA" value="{{old('vat_number')}}">
+                <input type="text" class="form-control @error('vat_number') is-invalid @enderror" id="vat_number" name="vat_number" placeholder="Inserisci la partita IVA" value="{{old('vat_number')}}" minlength="11" maxlength="11" required>
                 @error('vat_number')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
