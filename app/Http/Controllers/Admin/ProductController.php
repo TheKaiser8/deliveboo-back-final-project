@@ -70,7 +70,7 @@ class ProductController extends Controller
 
         $new_product->save();
 
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.show', $new_product);
     }
 
     /**
@@ -122,13 +122,13 @@ class ProductController extends Controller
 
         // $product->slug = Str::slug($data['name'], '-');
 
-        // if (isset($data['image'])) {
-        //     // controllo che verifica se è presente l'immagine e la cancella di default se già inserita
-        //     if ($product->image) {
-        //         Storage::disk('public')->delete($product->image);
-        //     }
-        //     $data['image'] = Storage::disk('public')->put('uploads', $data['image']);
-        // }
+        if (isset($data['image'])) {
+            // controllo che verifica se è presente l'immagine e la cancella di default se già inserita
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+            $data['image'] = Storage::disk('public')->put('uploads', $data['image']);
+        }
 
         // controllo che verifica se viene settata la checkbox per NON caricare alcuna immagine in fase di modifica del progetto
         // if (isset($data['no_image']) && $product->image) {
@@ -138,7 +138,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('admin.products.index')->with('message', "Il prodotto $old_name è stato aggiornato!");
+        return redirect()->route('admin.products.show', compact('product'))->with('message', "Il prodotto $old_name è stato aggiornato!");
     }
 
     /**
