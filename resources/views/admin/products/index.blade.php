@@ -5,17 +5,17 @@
 @endsection
 
 @section('content')
-    <div class="container mt-3">
-        <h2 class="mb-3">I tuoi prodotti</h2>
-        <a href="{{ route('admin.products.create')}}" class="btn btn-primary mb-3">Crea prodotto</a>
+    <div class="container pt-3">
+        <h2 class="fw-semibold text-center mb-3">I tuoi prodotti</h2>
+        <a href="{{ route('admin.products.create')}}" class="btn btn-primary fw-semibold mb-3"><i class="fa-solid fa-plus me-1"></i> Crea prodotto</a>
 
         @if(count($products) < 1)
-            <h2 class="mb-3">Non hai ancora creato alcun prodotto!</h2> 
+            <h2 class="text-center text-white ms-bg-title rounded py-5 mb-3">Crea i prodotti del tuo ristorante per visualizzare il tuo menù!</h2> 
         @else
-            <table class="table table-striped">
+            <table class="ms-table table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Titolo</th>
+                        <th scope="col">Nome</th>
                         <th scope="col">Tipologia</th>
                         <th scope="col">Disponibilità</th>
                         <th scope="col">Prezzo</th>
@@ -24,17 +24,17 @@
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
-                        <tr>
+                        <tr class="align-middle">
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->typology}}</td>
                             <td>{{ $product->is_available == 1 ? 'Disponibile' : 'Non disponibile'}}</td>
-                            <td>{{ $product->price}}</td>
+                            <td>{{ $product->price . '€'}}</td>
                             <td>
-                                <a href="{{ route('admin.products.show', $product) }}" class="btn btn-light"><i class="fa-solid fa-eye"></i></a>
-                                <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-light"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="{{ route('admin.products.show', $product) }}" class="btn btn-outline-info ms-white-hover my-1"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-outline-warning ms-white-hover my-1"><i class="fa-solid fa-pen-to-square"></i></a>
             
                                 <!-- Button modale (modalDelete) -->
-                                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#modalDelete-{{ $product->id }}"><i class="fa-solid fa-trash"></i></button>
+                                <button type="button" class="btn btn-outline-danger ms-white-hover my-1" data-bs-toggle="modal" data-bs-target="#modalDelete-{{ $product->id }}"><i class="fa-solid fa-trash"></i></button>
                             </td>
                         </tr>
                         <!-- Modale (modalDelete) -->
@@ -47,12 +47,12 @@
                                     </div>
                                     <div class="modal-body">Confermi di voler cancellare definitivamente il prodotto <strong>"{{ $product->name }}"</strong>?</div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                        <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Annulla</button>
                                         <form action="{{ route('admin.products.destroy', $product)}}" method="POST" class="d-inline-block">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-danger">Sì, cancella</button>
+                                            <button type="submit" class="btn btn-danger fw-semibold">Sì, cancella!</button>
                                         </form>
                                     </div>
                                 </div>
