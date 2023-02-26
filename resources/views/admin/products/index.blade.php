@@ -26,7 +26,7 @@
                     @foreach ($products as $product)
                         <tr class="align-middle">
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->typology}}</td>
+                            <td>{{ ucfirst($product->typology) }}</td>
                             @if( $product->is_available == 1 ) 
                                 <td class="text-success">Disponibile</td>
                             @else
