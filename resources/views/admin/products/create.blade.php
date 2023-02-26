@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="container pt-4">
+    <div class="container py-4">
         <h2 class="fw-semibold text-center mb-4">Crea un prodotto</h2>
         {{-- form di modifica prodotto --}}
         <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data" class="mb-5">

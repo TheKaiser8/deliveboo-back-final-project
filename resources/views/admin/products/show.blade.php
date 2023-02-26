@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('page-title')
-    Dettagli
+    Dettagli prodotto
 @endsection
 
 @section('content')
-    <div class="container d-flex flex-column align-items-center pt-4">
+    <div class="container d-flex flex-column align-items-center py-4">
         <h2 class="fw-semibold text-center mb-4">Dettagli "{{ $product->name }}"</h2>
         <div class="card w-50 rounded-top">
             @if ($product->image)
@@ -61,12 +61,12 @@
                     </div>
                     <div class="modal-body">Confermi di voler cancellare definitivamente il prodotto <strong>"{{ $product->name }}"</strong>?</div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                        <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Annulla</button>
                         <form action="{{ route('admin.products.destroy', $product)}}" method="POST" class="d-inline-block">
                             @csrf
                             @method('DELETE')
 
-                            <button type="submit" class="btn btn-danger">Sì, cancella</button>
+                            <button type="submit" class="btn btn-danger fw-semibold">Sì, cancella!</button>
                         </form>
                     </div>
                 </div>
