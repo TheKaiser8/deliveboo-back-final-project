@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-    <div class="container pt-3">
-        <h2 class="fw-semibold text-center mb-3">I tuoi prodotti</h2>
+    <div class="container pt-4">
+        <h2 class="fw-semibold text-center mb-4">I tuoi prodotti</h2>
         <a href="{{ route('admin.products.create')}}" class="btn btn-primary fw-semibold mb-3"><i class="fa-solid fa-plus me-1"></i> Crea prodotto</a>
 
         @if(count($products) < 1)
