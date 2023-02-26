@@ -7,6 +7,7 @@
 @section('content')
     <div class="container pt-3">
         <h2 class="fw-semibold text-center mb-3">Crea un prodotto</h2>
+        {{-- form di modifica prodotto --}}
         <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data" class="mb-5">
         @csrf
             {{-- campo nome --}}
@@ -93,9 +94,10 @@
                 @enderror
             </div>
             <div class="mt-4">
-                <button type="submit" class="btn btn-success">Conferma</button>
-                <a href="{{ route('admin.products.index')}}" class="btn btn-primary">Torna ai prodotti</a>
+                <button type="submit" class="btn btn-success fw-semibold me-2"><i class="fa-solid fa-check me-1"></i> Conferma</button>
+                <a href="{{ route('admin.products.index')}}" class="btn btn-primary fw-semibold"><i class="fa-solid fa-delete-left me-1"></i> Annulla</a>
             </div>         
         </form>
+        {{-- /form di modifica prodotto --}}
     </div>
 @endsection
