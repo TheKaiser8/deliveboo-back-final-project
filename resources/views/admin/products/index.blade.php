@@ -27,7 +27,11 @@
                         <tr class="align-middle">
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->typology}}</td>
-                            <td>{{ $product->is_available == 1 ? 'Disponibile' : 'Non disponibile'}}</td>
+                            @if( $product->is_available == 1 ) 
+                                <td class="text-success">Disponibile</td>
+                            @else
+                                <td class="text-danger">Non disponibile</td>
+                            @endif
                             <td>{{ $product->price . '€'}}</td>
                             <td>
                                 <a href="{{ route('admin.products.show', $product) }}" class="btn btn-outline-info ms-white-hover my-1"><i class="fa-solid fa-eye"></i></a>
