@@ -7,6 +7,9 @@
 @section('content')
     <div class="container py-4">
         <h2 class="fw-semibold text-center mb-4">Crea il tuo ristorante</h2>
+        <div class="w-100">
+            @include('partials.message')
+        </div>
         {{-- form di creazione ristorante --}}
         <form action="{{route('admin.restaurants.store')}}" method="POST" enctype="multipart/form-data" class="mb-5">
         @csrf
