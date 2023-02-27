@@ -7,7 +7,7 @@
 @section('content')
     <div class="container mt-5">
         <h1>Modifica il tuo Ristorante</h1>
-        <form action="{{ route('admin.restaurants.update', $restaurant) }}" method="POST" enctype="multipart/form-data" class="mb-5">
+        <form action="{{ route('admin.restaurants.update', $restaurant) }}" id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
         @csrf
         @method('PUT')
             {{-- campo name --}}
@@ -97,5 +97,21 @@
                 <a href="{{ route('admin.restaurants.show', Auth::user()->restaurant)}}" class="btn btn-primary">Ritorna al tuo ristorante</a>
             </div>
         </form>
+        <script>
+            document.getElementById('myForm').addEventListener('submit', function(e) {
+              let checkboxes = document.getElementsByName('kitchens[]');
+              let checked = false;
+              for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                  checked = true;
+                  break;
+                }
+              }
+              if (!checked) {
+                e.preventDefault();
+                alert('Seleziona almeno una checkbox');
+              }
+            });
+        </script>  
     </div>
 @endsection

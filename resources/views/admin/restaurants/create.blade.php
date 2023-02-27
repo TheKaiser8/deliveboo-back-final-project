@@ -7,7 +7,7 @@
 @section('content')
     <div class="container mt-5">
         <h1>Crea un Nuovo Ristorante</h1>
-        <form action="{{route('admin.restaurants.store')}}" method="POST" enctype="multipart/form-data" class="mb-5">
+        <form action="{{route('admin.restaurants.store')}}" id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
         @csrf
             {{-- campo nome --}}
             <div class="mb-3">
@@ -89,5 +89,21 @@
                 <button type="submit" class="btn btn-success">Conferma</button>
             </div>
         </form>
+        <script>
+            document.getElementById('myForm').addEventListener('submit', function(e) {
+              let checkboxes = document.getElementsByName('kitchens[]');
+              let checked = false;
+              for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                  checked = true;
+                  break;
+                }
+              }
+              if (!checked) {
+                e.preventDefault();
+                alert('Seleziona almeno una checkbox');
+              }
+            });
+        </script>  
     </div>
 @endsection
