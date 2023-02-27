@@ -7,7 +7,7 @@
 @section('content')
     <div class="container py-4">
         <h2 class="fw-semibold text-center mb-4">Crea un prodotto</h2>
-        {{-- form di modifica prodotto --}}
+        {{-- form di creazione prodotto --}}
         <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data" class="mb-5">
         @csrf
             {{-- campo nome --}}
@@ -98,6 +98,6 @@
                 <a href="{{ route('admin.products.index')}}" class="btn btn-primary fw-semibold"><i class="fa-solid fa-delete-left me-1"></i> Annulla</a>
             </div>         
         </form>
-        {{-- /form di modifica prodotto --}}
+        {{-- /form di creazione prodotto --}}
     </div>
 @endsection

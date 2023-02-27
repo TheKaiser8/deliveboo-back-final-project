@@ -70,7 +70,7 @@ class ProductController extends Controller
 
         $new_product->save();
 
-        return redirect()->route('admin.products.show', $new_product);
+        return redirect()->route('admin.products.show', $new_product)->with('message', "Il prodotto \"$new_product->name\" è stato creato con successo!");
     }
 
     /**
@@ -138,7 +138,7 @@ class ProductController extends Controller
 
         $product->update($data);
 
-        return redirect()->route('admin.products.show', compact('product'))->with('message', "Il prodotto $old_name è stato aggiornato!");
+        return redirect()->route('admin.products.show', compact('product'))->with('message', "Il prodotto \"$old_name\" è stato aggiornato!");
     }
 
     /**
@@ -157,6 +157,6 @@ class ProductController extends Controller
 
         $product->delete();
 
-        return redirect()->route('admin.products.index')->with('message', "Il prodotto $old_name è stato cancellato!");
+        return redirect()->route('admin.products.index')->with('message', "Il prodotto \"$old_name\" è stato cancellato!");
     }
 }

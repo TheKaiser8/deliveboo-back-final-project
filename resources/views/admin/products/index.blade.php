@@ -7,6 +7,9 @@
 @section('content')
     <div class="container py-4">
         <h2 class="fw-semibold text-center mb-4">I tuoi prodotti</h2>
+        <div class="w-100">
+            @include('partials.message')
+        </div>
         <a href="{{ route('admin.products.create')}}" class="btn btn-primary fw-semibold mb-3"><i class="fa-solid fa-plus me-1"></i> Crea prodotto</a>
 
         @if(count($products) < 1)

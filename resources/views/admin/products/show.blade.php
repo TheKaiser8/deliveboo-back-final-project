@@ -7,6 +7,9 @@
 @section('content')
     <div class="container d-flex flex-column align-items-center py-4">
         <h2 class="fw-semibold text-center mb-4">Dettagli "{{ $product->name }}"</h2>
+        <div class="w-100">
+            @include('partials.message')
+        </div>
         <div class="card w-50 rounded-top">
             @if ($product->image)
                 <div class="text-center p-3 bg-dark rounded-top">
