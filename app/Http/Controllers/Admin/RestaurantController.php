@@ -73,7 +73,7 @@ class RestaurantController extends Controller
 
         $new_restaurant->kitchens()->sync($data['kitchens']);
 
-        return redirect()->route('admin.restaurants.show', $new_restaurant);
+        return redirect()->route('admin.restaurants.show', $new_restaurant)->with('message', "Il ristorante \"$new_restaurant->name\" è stato creato con successo!");
     }
 
     /**
@@ -149,7 +149,7 @@ class RestaurantController extends Controller
             $restaurant->kitchens()->sync([]);
         }
 
-        return redirect()->route('admin.restaurants.show', $restaurant)->with('message', "Il ristorante $old_name è stato aggiornato!");
+        return redirect()->route('admin.restaurants.show', $restaurant)->with('message', "Il ristorante \"$old_name\" è stato aggiornato!");
     }
 
     /**
@@ -168,6 +168,6 @@ class RestaurantController extends Controller
 
         $restaurant->delete();
 
-        return redirect()->route('admin.restaurants.create')->with('message', "Il ristorante $old_name è stato cancellato!");
+        return redirect()->route('admin.restaurants.create')->with('message', "Il ristorante \"$old_name\" è stato cancellato!");
     }
 }

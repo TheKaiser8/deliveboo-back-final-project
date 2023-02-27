@@ -5,15 +5,17 @@
 @endsection
 
 @section('content')
-
-    <div class="container d-flex flex-column align-items-center">
-        <h2 class="text-decoration-underline my-3">Dettagli ristorante</h2>
+    <div class="container d-flex flex-column align-items-center py-4">
+        <h2 class="fw-semibold text-center mb-4">Dettagli "{{ $restaurant->name }}"</h2>
+        <div class="w-100">
+            @include('partials.message')
+        </div>
         <div class="card w-50 rounded-top">
-            <div class="text-center p-3 bg-dark rounded-top">
-                @if ($restaurant->image)
+            @if ($restaurant->image)
+                <div class="text-center p-3 bg-dark rounded-top">
                     <img src="{{ asset("storage/$restaurant->image") }}" class="card-img-top" alt="{{ $restaurant->name }}">
-                @endif
-            </div>
+                </div>
+            @endif
             <div class="card-body d-flex flex-column">
                 <div class="row bg-light rounded-top m-0 ">
                     <div class="col-6 m-auto px-4">
@@ -34,8 +36,8 @@
                     </div>   
                 </div>
                 <div class="text-center bg-light rounded-bottom py-3">
-                    <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-primary me-2"><i class="fa-solid fa-pen me-1"></i> Modifica</a>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalDelete-{{ $restaurant->id }}"><i class="fa-solid fa-trash me-1"></i> Cancella</button>
+                    <a href="{{ route('admin.restaurants.edit', $restaurant) }}" class="btn btn-warning text-white fw-semibold m-1"><i class="fa-solid fa-pen-to-square me-1"></i> Modifica</a>
+                    <button type="button" class="btn btn-danger fw-semibold m-1" data-bs-toggle="modal" data-bs-target="#modalDelete-{{ $restaurant->id }}"><i class="fa-solid fa-trash me-1"></i> Cancella</button>
                 </div>
             </div>      
         </div>
@@ -54,12 +56,12 @@
                         </div>
                         <div class="modal-body">Confermi di voler cancellare definitivamente il ristorante <strong>"{{ $restaurant->name }}"</strong>?</div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                            <button type="button" class="btn btn-secondary fw-semibold" data-bs-dismiss="modal">Annulla</button>
                             <form action="{{ route('admin.restaurants.destroy', $restaurant)}}" method="POST" class="d-inline-block">
                                 @csrf
                                 @method('DELETE')
 
-                                <button type="submit" class="btn btn-danger">Sì, cancella</button>
+                                <button type="submit" class="btn btn-danger fw-semibold">Sì, cancella!</button>
                             </form>
                         </div>
                     </div>
