@@ -57,18 +57,23 @@ class ProductSeeder extends Seeder
             ['name' => 'Insalata di mare', 'typology' => 'insalate', 'image' => 'https://www.fornellidisicilia.it/wp-content/uploads/2019/07/insalata-siciliana-di-mare.jpg'],
             ['name' => 'Parmigiana di melanzane', 'typology' => 'contorni', 'image' => 'https://www.chiarapassion.com/wp-content/uploads/2014/05/parmigiana-di-melanzane-7.jpg'],
             ['name' => 'Zucchine alla scapece', 'typology' => 'contorni', 'image' => 'https://wips.plug.it/cips/buonissimo.org/cms/2012/04/zucchine-alla-scapece.jpg?w=712&a=c&h=406'],
-            ['name' => 'Carciofi alla romana', 'typology' => 'contorni', 'image' => 'https://images2.corriereobjects.it/methode_image/2022/02/03/Cucina/Foto%20Cucina%20-%20Trattate/carciofi%20alla%20romana-kpHB-U3320541735061ESG-678x508@Corriere-Web-Sezioni.jpg?v=202202070607'],
-            ['name' => 'Cotoletta alla milanese', 'typology' => 'secondi', 'image' => 'https://www.tavolartegusto.it/wp/wp-content/uploads/2022/05/Cotoletta-alla-milanese.jpg'],
-            ['name' => 'Coca-Cola', 'typology' => 'bevande', 'image' => 'https://www.cicalia.com/it/img/imgproducts/19620/l_19620.jpg'],
-            ['name' => 'Acqua naturale', 'typology' => 'bevande', 'image' => 'https://sfiziedeliziepalermo.com/wp-content/uploads/2020/06/acqua-san-benedetto-naturale-50-cl.jpg'],
-            ['name' => 'Fanta', 'typology' => 'bevande', 'image' => 'https://www.numeriprimishop.it/113648-large_default/fanta-lattina-cl33.jpg'],
-            ['name' => 'Acqua frizzante', 'typology' => 'bevande', 'image' => 'https://static.sushilabroma.it/i/2018/03/acqua-frizzante-500ml.jpg'],
-            ['name' => 'Birra', 'typology' => 'bevande', 'image' => 'https://www.youdreamitaly.com/software/immagini/0000000019745_medium.jpg'],
-            ['name' => 'Sprite', 'typology' => 'bevande', 'image' => 'https://www.yumatest.it/bevifacilenew/wp-content/uploads/2020/03/sprite-33.jpg'],
-            ['name' => 'Tè freddo', 'typology' => 'bevande', 'image' => 'https://www.centrodistribuzionebevande.it/wp-content/uploads/2023/02/BI026_362.jpg'],
-            ['name' => 'Caffè', 'typology' => 'bevande', 'image' => 'https://www.medicalfacts.it/wp-content/uploads/2020/07/bigstock-Close-up-And-Top-View-Of-Hot-B-350989136-900x580.jpg'],
-            ['name' => 'Succhi di frutta', 'typology' => 'bevande', 'image' => 'https://www.ciboitalianocontadino.com/wp-content/uploads/2015/03/succo-fruttapiu-pesca.jpeg'],
-            ['name' => 'Vino rosso', 'typology' => 'bevande', 'image' => 'https://www.amanti.events/618-large_default/cannonau-di-sardegna-sella-mosca.jpg'],
+            ['name' => 'Carciofi alla Romana', 'typology' => 'contorni', 'image' => 'https://images2.corriereobjects.it/methode_image/2022/02/03/Cucina/Foto%20Cucina%20-%20Trattate/carciofi%20alla%20romana-kpHB-U3320541735061ESG-678x508@Corriere-Web-Sezioni.jpg?v=202202070607'],
+            ['name' => 'Cotoletta alla Milanese', 'typology' => 'secondi', 'image' => 'https://www.tavolartegusto.it/wp/wp-content/uploads/2022/05/Cotoletta-alla-milanese.jpg'],
+            ['name' => 'Coca-Cola', 'typology' => 'bibite', 'image' => 'https://www.cicalia.com/it/img/imgproducts/19620/l_19620.jpg'],
+            ['name' => 'Acqua Naturale', 'typology' => 'bibite', 'image' => 'https://sfiziedeliziepalermo.com/wp-content/uploads/2020/06/acqua-san-benedetto-naturale-50-cl.jpg'],
+            ['name' => 'Fanta', 'typology' => 'bibite', 'image' => 'https://www.numeriprimishop.it/113648-large_default/fanta-lattina-cl33.jpg'],
+            ['name' => 'Acqua Frizzante', 'typology' => 'bibite', 'image' => 'https://static.sushilabroma.it/i/2018/03/acqua-frizzante-500ml.jpg'],
+            ['name' => 'Tagliere di Salumi e Formaggi', 'typology' => 'contorni', 'image' => 'https://www.fattoincasadabenedetta.it/wp-content/uploads/2022/12/IDEA_DI_TAGLIERE_DI_SALUMI_E_FORMAGGI_PER_MILLE_OCCASIONI_SITO-4.jpg'],
+            ['name' => 'Sprite', 'typology' => 'bibite', 'image' => 'https://www.yumatest.it/bevifacilenew/wp-content/uploads/2020/03/sprite-33.jpg'],
+            ['name' => 'Tè Freddo', 'typology' => 'bibite', 'image' => 'https://www.centrodistribuzionebevande.it/wp-content/uploads/2023/02/BI026_362.jpg'],
+            ['name' => 'Caffè', 'typology' => 'bibite', 'image' => 'https://www.medicalfacts.it/wp-content/uploads/2020/07/bigstock-Close-up-And-Top-View-Of-Hot-B-350989136-900x580.jpg'],
+            ['name' => 'Succhi di frutta', 'typology' => 'bibite', 'image' => 'https://www.ciboitalianocontadino.com/wp-content/uploads/2015/03/succo-fruttapiu-pesca.jpeg'],
+            ['name' => 'Vino Rosso', 'typology' => 'alcolici', 'image' => 'https://www.amanti.events/618-large_default/cannonau-di-sardegna-sella-mosca.jpg'],
+            ['name' => 'Vino Bianco', 'typology' => 'alcolici', 'image' => 'https://shared.winelivery.com/images/products/604f7be5f95e6b0013c0cb00.jpeg'],
+            ['name' => 'Birra', 'typology' => 'alcolici', 'image' => 'https://www.youdreamitaly.com/software/immagini/0000000019745_medium.jpg'],
+            ['name' => 'Sake', 'typology' => 'alcolici', 'image' => 'https://www.ilgiornaledelcibo.it/wp-content/uploads/2016/03/SAKE-SOMMELIER-02-2016-92.jpg'],
+            ['name' => 'Spritz', 'typology' => 'alcolici', 'image' => 'https://contrispumanti.com/download/decv/9061/why-not-spritz.jpg?20190423180853'],
+            ['name' => 'Liquore al Cioccolato', 'typology' => 'alcolici', 'image' => 'https://severiniwines.com/pub/media/catalog/product/cache/image/870x1110/e9c3970ab036de70892d86c6d221abfe/b/o/bottega-liquore-al-cioccolato-nero-shop-online-severiniwines.jpg'],
         ];
 
         $max_products_per_restaurant = 10;
@@ -115,7 +120,10 @@ class ProductSeeder extends Seeder
                     case 'secondi':
                         $new_product->price = $faker->randomFloat(2, 10, 30);
                         break;
-                    case 'bevande':
+                    case 'bibite':
+                        $new_product->price = $faker->randomFloat(2, 10, 10);
+                        break;
+                    case 'alcolici':
                         $new_product->price = $faker->randomFloat(2, 10, 10);
                         break;
                     default:
