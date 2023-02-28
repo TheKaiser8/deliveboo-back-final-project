@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->boolean('is_available', 1);
-            $table->string('image')->nullable();
+            $table->string('image', 2000)->nullable();
             $table->string('typology', 30);
             $table->text('description', 500);
             $table->text('ingredients', 500);
