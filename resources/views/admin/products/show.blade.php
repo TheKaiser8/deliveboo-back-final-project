@@ -11,11 +11,16 @@
             @include('partials.message')
         </div>
         <div class="card w-50 rounded-top">
-            @if ($product->image)
+            
                 <div class="text-center p-3 bg-dark rounded-top">
-                        <img src="{{ asset("storage/$product->image") }}" class="card-img-top" alt="{{ $product->name }}">
+                    @if ($product->image)
+                        @if (str_starts_with($product->image, "uploads"))
+                            <img src="{{ asset("storage/$product->image") }}" class="card-img-top" alt="{{ $product->name }}">
+                        @else
+                            <img src="{{ asset("$product->image") }}" class="card-img-top" alt="{{ $product->name }}">       
+                        @endif
+                    @endif
                 </div>
-            @endif
             <div class="card-body">
                 <div class="bg-light rounded-top p-3">
                     <h4 class="card-title text-center fw-bold">{{ $product->name}}</h4>
