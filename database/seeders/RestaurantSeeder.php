@@ -24,9 +24,19 @@ class RestaurantSeeder extends Seeder
         Restaurant::truncate();
         Schema::enableForeignKeyConstraints();
 
+        $restaurants = [
+            'La Pergola',
+            'Sora Lella', 
+            'Osteria Francescana', 
+            'Le Calandre', 
+            'Il Ristorante del Borgo', 
+            'La Trattoria da Gino', 
+            'La Taverna del Vecchio Mulino', 
+            'La Pizzeria del Corso', 
+            'La Locanda della Luna', 
+            'Sapori d\'Oriente'
+        ];
 
-
-        $restaurants = ['La pizzeria', 'La trattoria', 'Trancio', 'Soralella', 'MC donald', 'Burger King', 'Trapezzino', 'Le calandre'];
         foreach(User::all() as $key=>$user){
             $new_restaurant = new Restaurant();
             $new_restaurant->name = $restaurants[$key];
