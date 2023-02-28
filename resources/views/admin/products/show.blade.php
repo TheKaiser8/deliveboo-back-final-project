@@ -15,9 +15,9 @@
                 <div class="text-center p-3 bg-dark rounded-top">
                     @if ($product->image)
                         @if (str_starts_with($product->image, "uploads"))
-                            <img src="{{ asset("storage/$product->image") }}" class="card-img-top" alt="{{ $product->name }}">
+                            <img src="{{ asset("storage/$product->image") }}" class="card-img-top" style="max-height: 550px" alt="{{ $product->name }}">
                         @else
-                            <img src="{{ asset("$product->image") }}" class="card-img-top" alt="{{ $product->name }}">       
+                            <img src="{{ asset("$product->image") }}" class="card-img-top" style="max-height: 550px" alt="{{ $product->name }}">       
                         @endif
                     @endif
                 </div>
