@@ -34,13 +34,9 @@
                 <label for="typology" class="form-label fw-semibold mb-2">Tipologia*</label>
                 <select name="typology" id="typology" class="form-select @error('typology') is-invalid @enderror" required>
                     <option value="" disabled selected>Seleziona una tipologia</option>
-                    <option value="panini" {{ old('typology') == 'panini' ? 'selected' : ''}}>Panini</option>
-                    <option value="pizza" {{ old('typology') == 'pizza' ? 'selected' : ''}}>Pizza</option>
-                    <option value="sushi" {{ old('typology') == 'sushi' ? 'selected' : ''}}>Sushi</option>
-                    <option value="vegetariano" {{ old('typology') == 'vegetariano' ? 'selected' : ''}}>Vegetariano</option>
-                    <option value="dessert" {{ old('typology') == 'dessert' ? 'selected' : ''}}>Dessert</option>
-                    <option value="bevande" {{ old('typology') == 'bevande' ? 'selected' : ''}}>Bevande</option>
-                    <option value="alcolici" {{ old('typology') == 'alcolici' ? 'selected' : ''}}>Alcolici</option>
+                    @foreach($typologies as $typology)
+                        <option value="{{ $typology->typology }}" {{ old('typology') == $typology->typology ? 'selected' : '' }}>{{ ucfirst($typology->typology) }}</option>
+                    @endforeach
                 </select>
                 @error('typology')
                     <div class="alert alert-danger">{{ $message }}</div>

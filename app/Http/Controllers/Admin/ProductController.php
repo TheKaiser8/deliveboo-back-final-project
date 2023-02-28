@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateProductRequest;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -38,7 +39,9 @@ class ProductController extends Controller
      */
     public function create(Product $product)
     {
-        return view('admin.products.create');
+        $products = Product::all();
+        $typologies = DB::table('products')->select('typology')->distinct()->get();
+        return view('admin.products.create', compact('products', 'typologies'));
     }
 
     /**
@@ -98,14 +101,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-
         $user = Auth::id();
         $url = url()->previous();
         if ($product->restaurant->user_id != $user) {
             return redirect($url);
         }
-
-        return view('admin.products.edit', compact('product'));
+        $typologies = DB::table('products')->select('typology')->distinct()->get();
+        return view('admin.products.edit', compact('product', 'typologies'));
     }
 
     /**

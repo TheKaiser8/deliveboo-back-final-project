@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $products = [
-            ['name' => 'Pizza margherita', 'typology' => 'pizza', 'image'=>'https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg'],
+            ['name' => 'Pizza margherita', 'typology' => 'pizza', 'image' => 'https://www.unmondodisapori.it/wp-content/uploads/2017/10/margherita.jpg'],
             ['name' => 'Hamburger', 'typology' => 'panini', 'image' => 'https://media-assets.lacucinaitaliana.it/photos/61fae7f75f740bfb879f54e8/16:9/w_2560%2Cc_limit/iStock-636305290.jpg'],
             ['name' => 'Cheeseburger', 'typology' => 'panini', 'image' => 'https://imagesvc.meredithcorp.io/v3/mm/image?q=60&c=sc&poi=face&w=750&h=375&url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd51%2Fburger-lettuce-tomato-pickle-cheese-06167-102941304%2Fburger-lettuce-tomato-pickle-cheese-06167-102941304_horiz.jpg%3Fitok%3DRijLVxLi'],
             ['name' => 'Lasagne', 'typology' => 'pasta', 'image' => 'https://wips.plug.it/cips/buonissimo.org/cms/2011/12/lasagne-al-forno-alla-ferrarese.jpg'],
@@ -81,7 +81,7 @@ class ProductSeeder extends Seeder
                 if ($products_added >= $max_products_per_restaurant) {
                     break; // esci dal ciclo se il numero massimo di prodotti è stato raggiunto
                 }
-                
+
                 $new_product = new Product();
                 $new_product->name = $product['name'];
                 $new_product->is_available = $faker->numberBetween(0, 1);
@@ -89,7 +89,7 @@ class ProductSeeder extends Seeder
                 $new_product->typology = $product['typology'];
                 $new_product->description = $faker->paragraph(2);
                 $new_product->ingredients = $faker->paragraph(1);
-        
+
                 switch ($product['typology']) {
                     case 'pizza':
                         $new_product->price = $faker->randomFloat(2, 5, 15);
@@ -121,11 +121,11 @@ class ProductSeeder extends Seeder
                     default:
                         $new_product->price = $faker->randomFloat(2, 5, 15);
                 }
-        
+
                 $new_product->restaurant_id = $restaurant->id;
                 $new_product->save();
                 $products_added++;
             }
         }
-    }    
+    }
 }
