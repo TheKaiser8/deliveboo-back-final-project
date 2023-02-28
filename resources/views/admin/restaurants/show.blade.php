@@ -11,11 +11,17 @@
             @include('partials.message')
         </div>
         <div class="card w-50 rounded-top">
-            @if ($restaurant->image)
+            
                 <div class="text-center p-3 bg-dark rounded-top">
-                    <img src="{{ asset("storage/$restaurant->image") }}" class="card-img-top" alt="{{ $restaurant->name }}">
+                    @if ($restaurant->image)
+                        @if (str_starts_with($restaurant->image, "uploads"))
+                            <img src="{{ asset("storage/$restaurant->image") }}" class="card-img-top" alt="{{ $restaurant->name }}">
+                        @else
+                            <img src="https://www.ilborghista.it/immaginiutente/attivita_foto/300_m_32915-ath0q9p5q6b3m7b3b8p7x9k3x4v9q4k5b5w3l1z1d6k5q1g6p3k7.jpg?a=9192" class="card-img-top" alt="{{ $restaurant->name }}">
+                        @endif
+                    @endif
                 </div>
-            @endif
+           
             <div class="card-body d-flex flex-column">
                 <div class="row bg-light rounded-top m-0 ">
                     <div class="col-6 m-auto px-4">
