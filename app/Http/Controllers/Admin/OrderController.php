@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -16,7 +17,15 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = [];
+        $restaurant = Auth::user()->restaurant;
+        foreach (Order::all() as $order){
+            $orderRestaurant = $order -> products->first()->restaurant_id;
+            if( $restaurant->id == $orderRestaurant){
+                array_push($orders, $order);
+            }
+        }
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**

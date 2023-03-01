@@ -29,6 +29,8 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/restaurant', function () {
         return redirect()->route('admin.restaurants.show', Auth::user()->restaurant);
     });
+
+    Route::resource('orders', OrderController::class);
 });
 
 require __DIR__ . '/auth.php';
