@@ -17,7 +17,7 @@
                             @if($product->typology == 'bibite' || $product->typology == 'alcolici')
                                 <img src="{{ asset("storage/$product->image") }}" class="card-img-top ms-mh-400-contain" alt="{{ $product->name }}">
                             @else
-                                <img src="{{ asset("$product->image") }}" class="card-img-top ms-mh-400-cover" alt="{{ $product->name }}">
+                                <img src="{{ asset("storage/$product->image") }}" class="card-img-top ms-mh-400-cover" alt="{{ $product->name }}">
                             @endif
                         @else
                             @if($product->typology == 'bibite' || $product->typology == 'alcolici')
