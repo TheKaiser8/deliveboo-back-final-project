@@ -27,7 +27,7 @@
                 <tbody>
                     @foreach ($orders as $order)
                         <tr class="align-middle">
-                            <td>{{ $order->customer_name }}</td>
+                            <td>{{ $order->name_customer }}</td>
                             <td>{{ $order->total_price . '€'}}</td>
                             <td>
                                 <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-outline-info ms-white-hover my-1"><i class="fa-solid fa-eye"></i></a>

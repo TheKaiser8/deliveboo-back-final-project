@@ -20,7 +20,8 @@ class OrderController extends Controller
         $orders = [];
         $restaurant = Auth::user()->restaurant;
         foreach (Order::all() as $order){
-            $orderRestaurant = $order -> products->first()->restaurant_id;
+            // dd($order);
+            $orderRestaurant = $order->products->first()->restaurant_id;
             if( $restaurant->id == $orderRestaurant){
                 array_push($orders, $order);
             }
