@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 25);
+            $table->string('name', 50);
             $table->boolean('is_available', 1);
             $table->string('image', 2000)->nullable();
             $table->string('typology', 30);
