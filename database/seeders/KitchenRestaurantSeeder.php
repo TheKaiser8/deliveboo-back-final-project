@@ -6,6 +6,7 @@ use App\Models\Kitchen;
 use App\Models\Restaurant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class KitchenRestaurantSeeder extends Seeder
@@ -18,11 +19,22 @@ class KitchenRestaurantSeeder extends Seeder
     public function run()
     {
 
-    for($i = 1; $i <= count(Restaurant::all()); $i++){
+        Schema::disableForeignKeyConstraints();
+        DB::table('kitchen_restaurant')->truncate();
+        Schema::enableForeignKeyConstraints();
 
-        $restaurant = Restaurant::find($i);
-        $restaurant->kitchens()->attach($i);
-      
+        $restaurants = Restaurant::all();
+        $kitchens = Kitchen::all();
+
+        foreach ($restaurants as $restaurant) {
+            // scegliere un numero casuale di cucine tra 1 e 3
+            $count = rand(1, 3);
+
+            // creare un array di indici casuale delle cucine
+            $kitchenIds = $kitchens->pluck('id')->shuffle()->take($count);
+
+            // associare le cucine al ristorante
+            $restaurant->kitchens()->sync($kitchenIds);
         }
         
     }
