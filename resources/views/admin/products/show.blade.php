@@ -11,14 +11,23 @@
             @include('partials.message')
         </div>
         <div class="card w-50 rounded-top">
-            
                 <div class="text-center p-3 bg-dark rounded-top">
                     @if ($product->image)
                         @if (str_starts_with($product->image, "uploads"))
-                            <img src="{{ asset("storage/$product->image") }}" class="card-img-top" style="max-height: 550px" alt="{{ $product->name }}">
+                            @if($product->typology == 'bibite' || $product->typology == 'alcolici')
+                                <img src="{{ asset("storage/$product->image") }}" class="card-img-top ms-mh-400-contain" alt="{{ $product->name }}">
+                            @else
+                                <img src="{{ asset("$product->image") }}" class="card-img-top ms-mh-400-cover" alt="{{ $product->name }}">
+                            @endif
                         @else
-                            <img src="{{ asset("$product->image") }}" class="card-img-top" style="max-height: 550px" alt="{{ $product->name }}">       
+                            @if($product->typology == 'bibite' || $product->typology == 'alcolici')
+                                <img src="{{ asset("$product->image") }}" class="card-img-top ms-mh-400-contain" alt="{{ $product->name }}">
+                            @else
+                                <img src="{{ asset("$product->image") }}" class="card-img-top ms-mh-400-cover" alt="{{ $product->name }}">
+                            @endif
                         @endif
+                    @else
+                        <img src="https://images-ext-1.discordapp.net/external/WSCfXdJSu7xxp0MoqcrFbd169K36Fqa8oCjUW4TQfQs/https/hudsonvalley.org/wp-content/sabai/File/files/l_e205c25b233d904b3725455155344204.png?width=791&height=593" class="card-img-top ms-mh-400-cover" alt="{{ $product->name }}">
                     @endif
                 </div>
             <div class="card-body">

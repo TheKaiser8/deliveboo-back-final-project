@@ -9,3 +9,13 @@
 .ms-bg-title {
     background-image: linear-gradient(white, black);
 }
+
+.ms-mh-400-cover {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.ms-mh-400-contain {
+    max-height: 400px;
+    object-fit: contain;
+}
