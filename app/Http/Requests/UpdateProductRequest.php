@@ -29,10 +29,7 @@ class UpdateProductRequest extends FormRequest
             'name' => 'required|string|max:100',
             'is_available' => 'required|boolean',
             'image' => 'nullable|image|max:2048',
-            'typology' => [
-                'required',
-                Rule::in(['panini', 'pizza', 'sushi', 'vegetariano', 'dessert', 'bevande', 'alcolici'])
-            ],
+            'typology' => 'required|exists:products,typology',
             'description' => 'required|string|max:500|min:10',
             'ingredients' => 'required|string|max:500|min:10',
             'price' => 'required|numeric|between:0.00,99.99'

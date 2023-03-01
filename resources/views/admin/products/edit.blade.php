@@ -36,7 +36,7 @@
                 <select name="typology" id="typology" class="form-select @error('typology') is-invalid @enderror" required>
                     <option value="" disabled selected>Seleziona una tipologia</option>
                     @foreach($typologies as $typology)
-                        <option value="{{ $typology->typology }}" {{ old('typology', $typology->typology) == $typology->typology ? 'selected' : '' }}>{{ ucfirst($typology->typology) }}</option>
+                        <option value="{{ $typology->typology }}" {{ old('typology', $product->typology) == $typology->typology ? 'selected' : '' }}>{{ ucfirst($typology->typology) }}</option>
                     @endforeach
                 </select>
                 @error('typology')
