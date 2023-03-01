@@ -25,4 +25,8 @@ class Product extends Model
     {
         return $this->belongsTo(Restaurant::class);
     }
+
+    public function orders(){
+        return $this->belongsToMany('App\Models\Order', 'order_product', 'product_id', 'order_id' )->withPivot('quantity');
+    }
 }
