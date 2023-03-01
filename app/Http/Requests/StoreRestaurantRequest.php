@@ -26,7 +26,7 @@ class StoreRestaurantRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:100',
+            'name' => 'required|string|max:50',
             'city' => 'required|string|max:50',
             'street_address' => 'required|string|max:100',
             'postal_code' => 'required|numeric|digits:5',
@@ -41,7 +41,7 @@ class StoreRestaurantRequest extends FormRequest
         return [
             'name.required' => 'Attenzione: il nome è richiesto.',
             'name.string' => 'Attenzione: il nome deve essere una sequenza di caratteri alfabetici, numerici e/o speciali.',
-            'name.max' => 'Attenzione: il nome non può superare i 100 caratteri, spazi inclusi.',
+            'name.max' => 'Attenzione: il nome non può superare i 50 caratteri, spazi inclusi.',
             'city.required' => 'Attenzione: la città è richiesta.',
             'city.string' => 'Attenzione: la città deve essere una sequenza di caratteri alfabetici, numerici e/o speciali.',
             'city.max' => 'Attenzione: la città non può superare i 50 caratteri, spazi inclusi.',
