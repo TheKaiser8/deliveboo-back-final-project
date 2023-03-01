@@ -17,7 +17,7 @@ class Product extends Model
     protected function getImageUrlAttribute()
     {
         if (str_starts_with($this->image, "uploads")) {
-            return $this->image ? asset("storage/$this->image") : "'https://via.placeholder.com/400x200'";
+            return $this->image ? asset("storage/$this->image") : "https://www.ilborghista.it/immaginiutente/attivita_foto/300_m_32915-ath0q9p5q6b3m7b3b8p7x9k3x4v9q4k5b5w3l1z1d6k5q1g6p3k7.jpg?a=9192";
         }
     }
 
