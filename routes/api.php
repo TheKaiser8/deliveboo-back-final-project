@@ -20,3 +20,6 @@ Route::get('restaurants', [RestaurantController::class, 'index']);
 
 // rotta /api/restaurants/nome-ristorante-città-codice-postale (slug d'esempio)
 Route::get('restaurants/{slug}', [RestaurantController::class, 'show']);
+
+//rotta /api/orders
+Route::post('/orders', [OrderController::class, 'store']);
