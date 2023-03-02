@@ -79,7 +79,7 @@
                 @enderror
             </div>
             {{-- campo cucine --}}
-            <div class="mb-3">
+            <div class="kitchens-container mb-3">
                 <h6 class="fw-semibold mb-2">Cucina/e*</h6>
                 @foreach ($kitchens as $kitchen)
                     <div class="form-check form-check-inline">
@@ -104,18 +104,29 @@
         </form>
         <script>
             document.getElementById('myForm').addEventListener('submit', function(e) {
-              let checkboxes = document.getElementsByName('kitchens[]');
-              let checked = false;
-              for (let i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
-                  checked = true;
-                  break;
+                let checkboxes = document.getElementsByName('kitchens[]');
+                let checked = false;
+                for (let i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i].checked) {
+                    checked = true;
+                    break;
+                    }
                 }
-              }
-              if (!checked) {
-                e.preventDefault();
-                alert('Seleziona almeno una checkbox');
-              }
+                if (!checked) {
+                    e.preventDefault();
+                    let errorMessage = document.querySelector('.alert-danger');
+                    if (!errorMessage) {
+                        errorMessage = document.createElement('div');
+                        errorMessage.classList.add('alert', 'alert-danger', 'mt-2');
+                        errorMessage.innerHTML = 'Seleziona almeno una casella per procedere';
+                        document.querySelector('.kitchens-container').appendChild(errorMessage);
+                    }
+                } else {
+                    let errorMessage = document.querySelector('.alert-danger');
+                    if (errorMessage) {
+                        errorMessage.remove();
+                    }
+                }
             });
         </script>  
     </div>
