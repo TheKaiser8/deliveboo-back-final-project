@@ -19,13 +19,14 @@ class OrderController extends Controller
     {
         $orders = [];
         $restaurant = Auth::user()->restaurant;
-        foreach (Order::all() as $order){
+        foreach (Order::all() as $order) {
             // dd($order);
             $orderRestaurant = $order->products->first()->restaurant_id;
-            if( $restaurant->id == $orderRestaurant){
+            if ($restaurant->id == $orderRestaurant) {
                 array_push($orders, $order);
             }
         }
+        $orders = array_reverse($orders);
         return view('admin.orders.index', compact('orders'));
     }
 
