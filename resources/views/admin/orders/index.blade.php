@@ -17,11 +17,13 @@
             <table class="ms-table table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Tipologia</th>
-                        <th scope="col">Disponibilità</th>
-                        <th scope="col">Prezzo</th>
-                        <th scope="col">Azioni</th>
+                        <th scope="col">Nome Cliente</th>
+                        <th scope="col">Pagamento</th>
+                        <th scope="col">Email Cliente</th>
+                        <th scope="col">Indirizzo Cliente</th>
+                        <th scope="col">Telefono Cliente</th>
+                        <th scope="col">Data Creazione</th>
+                        <th scope="col" class="text-center">Dettagli Ordine</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,14 +31,20 @@
                         <tr class="align-middle">
                             <td>{{ $order->name_customer }}</td>
                             <td>{{ $order->total_price . '€'}}</td>
-                            <td>
-                                <a href="{{ route('admin.orders.show', $order) }}" class="btn btn-outline-info ms-white-hover my-1"><i class="fa-solid fa-eye"></i></a>
+                            <td>{{ $order->email_customer }}</td>
+                            <td>{{ $order->address_customer }}</td>
+                            <td>{{ $order->phone_number }}</td>              
+                            <td>{{ $order->created_at }}</td>
+                            <td class="text-center"><a href="{{ route('admin.orders.show', $order) }}" class="btn btn-outline-info ms-white-hover my-1"><i class="fa-solid fa-eye"></i></a></td>
+                            {{-- <td>
+                                
                                 <!-- Button modale (modalDelete) -->
                                 <button type="button" class="btn btn-outline-danger ms-white-hover my-1" data-bs-toggle="modal" data-bs-target="#modalDelete-{{ $order->id }}"><i class="fa-solid fa-trash"></i></button>
-                            </td>
+                            </td> --}}
                         </tr>
+                        
                         <!-- Modale (modalDelete) -->
-                        <div class="modal fade" id="modalDelete-{{ $order->id }}" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
+                        {{-- <div class="modal fade" id="modalDelete-{{ $order->id }}" tabindex="-1" aria-labelledby="modalDeleteLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -55,7 +63,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     @endforeach
                 </tbody>
             </table>
