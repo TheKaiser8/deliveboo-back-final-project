@@ -18,6 +18,8 @@
                     @else
                         <img src="https://www.ilborghista.it/immaginiutente/attivita_foto/300_m_32915-ath0q9p5q6b3m7b3b8p7x9k3x4v9q4k5b5w3l1z1d6k5q1g6p3k7.jpg?a=9192" class="card-img-top ms-mh-400-cover" alt="{{ $restaurant->name }}">
                     @endif
+                @else
+                    <img src="https://www.ilborghista.it/immaginiutente/attivita_foto/300_m_32915-ath0q9p5q6b3m7b3b8p7x9k3x4v9q4k5b5w3l1z1d6k5q1g6p3k7.jpg?a=9192" class="card-img-top ms-mh-400-cover" alt="{{ $restaurant->name }}">
                 @endif
             </div>
             <div class="card-body d-flex flex-column">
