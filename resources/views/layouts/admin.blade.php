@@ -90,6 +90,7 @@
           >
             <div class="position-sticky pt-3">
               <ul class="nav flex-column">
+                {{-- restaurant button --}}
                 @if( Auth::user()->restaurant )
                   <li class="nav-item">
                     <a
@@ -101,6 +102,7 @@
                     </a>
                   </li>
                 @endif
+                {{-- products button --}}
                 @if(Auth::user()->restaurant)
                   <li class="nav-item">
                     <a
@@ -112,15 +114,18 @@
                     </a>
                   </li>
                 @endif
-                {{-- <li class="nav-item">
-                  <a
-                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.orders') ? 'bg-secondary' : '' }}"
-                    href="{{route('admin.orders.index')}}"
-                  >
-                    <i class="fa-solid fa-truck-fast fa-lg fa-fw"></i>
-                    Ordini
-                  </a>
-                </li> --}}
+                {{-- orders button --}}
+                @if(Auth::user()->restaurant)
+                  <li class="nav-item">
+                    <a
+                      class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.orders') ? 'bg-secondary' : '' }}"
+                      href="{{route('admin.orders.index')}}"
+                    >
+                      <i class="fa-solid fa-truck-fast fa-lg fa-fw"></i>
+                      Ordini
+                    </a>
+                  </li>
+                @endif
                 {{-- <li class="nav-item">
                   <a
                     class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.stats') ? 'bg-secondary' : '' }}"
