@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\RedirectController;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     });
 
     Route::resource('orders', OrderController::class);
+
+    // Rotta che indirizza al frontoffice dal backoffice
+    Route::get('/backoffice-to-frontoffice', [RedirectController::class, 'redirectToFrontOffice'])->name('backoffice-to-frontoffice');
 });
 
 require __DIR__ . '/auth.php';
