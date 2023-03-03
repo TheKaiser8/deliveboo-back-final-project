@@ -17,16 +17,30 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = [];
+        // $orders = [];
+        // $restaurant = Auth::user()->restaurant;
+        // foreach (Order::all() as $order) {
+        //     // dd($order);
+        //     $orderRestaurant = $order->products->first()->restaurant_id;
+        //     if ($restaurant->id == $orderRestaurant) {
+        //         array_push($orders, $order);
+        //     }
+        // }
+        // $orders = array_reverse($orders);
+        // return view('admin.orders.index', compact('orders'));
+
+        // Recupera il ristorante dell'utente loggato
         $restaurant = Auth::user()->restaurant;
-        foreach (Order::all() as $order) {
-            // dd($order);
-            $orderRestaurant = $order->products->first()->restaurant_id;
-            if ($restaurant->id == $orderRestaurant) {
-                array_push($orders, $order);
-            }
-        }
-        $orders = array_reverse($orders);
+
+        // Recupera gli ordini che hanno almeno un prodotto appartenente al ristorante dell'utente loggato
+        $orders = Order::whereHas('products', function ($query) use ($restaurant) {
+            // Imposta una clausola where sulla colonna 'restaurant_id' del prodotto
+            // confrontandola con l'id del ristorante dell'utente loggato
+            $query->where('restaurant_id', $restaurant->id);
+        })
+            // Ordina gli ordini per data di creazione e per id in ordine decrescente
+            ->orderByDesc('created_at')->orderByDesc('id')
+            ->get();
         return view('admin.orders.index', compact('orders'));
     }
 
@@ -59,7 +73,22 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        // $user = Auth::id();
+        // $url = url()->previous();
+        // if ($order->user_id != $user) {
+        // return redirect($url);
+        // }
+        // Recupera il ristorante dell'utente loggato
+        $restaurant = Auth::user()->restaurant;
+
+        // Verifica che l'ordine appartenga al ristorante dell'utente loggato
+        if ($order->products->where('restaurant_id', $restaurant->id)->isEmpty()) {
+            // Se l'ordine non appartiene al ristorante dell'utente loggato, reindirizza all'URL precedente
+            $url = url()->previous();
+            return redirect($url);
+        }
+
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
