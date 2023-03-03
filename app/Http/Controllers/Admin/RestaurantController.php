@@ -135,11 +135,11 @@ class RestaurantController extends Controller
             $data['image'] = Storage::disk('public')->put('uploads', $data['image']);
         }
 
-        // controllo che verifica se viene settata la checkbox per NON caricare alcuna immagine in fase di modifica del progetto
-        // if (isset($data['no_image']) && $restaurant->image) {
-        //     Storage::disk('public')->delete($restaurant->image);
-        //     $restaurant->image = null;
-        // }
+        // controllo che verifica se viene settata la checkbox per NON caricare alcuna immagine in fase di modifica del ristorante
+        if (isset($data['no_image']) && $restaurant->image) {
+            Storage::disk('public')->delete($restaurant->image);
+            $restaurant->image = null;
+        }
 
         $restaurant->update($data);
 

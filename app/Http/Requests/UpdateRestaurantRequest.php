@@ -32,6 +32,7 @@ class UpdateRestaurantRequest extends FormRequest
             'postal_code' => 'required|numeric|digits:5',
             'vat_number' => ['required', Rule::unique('restaurants')->ignore($this->restaurant), 'numeric', 'digits:11'],
             'image' => 'nullable|image|max:2048',
+            'no_image' => 'nullable',
             'kitchens' => 'required|exists:kitchens,id'
         ];
     }

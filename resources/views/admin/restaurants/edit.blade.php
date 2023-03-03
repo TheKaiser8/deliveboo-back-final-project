@@ -57,26 +57,64 @@
             </div>
             {{-- campo immagine --}}
             <div class="mb-3">
-                <label for="image" class="form-label fw-semibold mb-0">Copertina ristorante</label>
-                {{-- image preview --}}
-                <div class="ms-lh-0">
-                    <img id="output" width="150" class="my-2"/>
-                    <script>
-                        let loadFile = function(event) {
-                            let reader = new FileReader();
-                            reader.onload = function(){
-                            let output = document.getElementById('output');
-                            output.src = reader.result;
-                            };
-                            reader.readAsDataURL(event.target.files[0]);
+                <label for="image" class="form-label fw-semibold">Copertina ristorante</label>
+                <div class="preview-container"></div>
+                {{-- preview immagine --}}
+                <script>
+                    const loadFile = function(event) {
+                        const reader = new FileReader();
+                        reader.onload = function() {
+                            const label = document.querySelector('label[for="image"]');
+                            const previewContainer = document.querySelector('.preview-container');
+                            const img = document.createElement('img');
+                            img.classList.add('mb-3');
+                            img.src = reader.result;
+                            img.width = 150;
+                            previewContainer.innerHTML = ''; // Rimuovi eventuali preview precedenti
+                            previewContainer.appendChild(img);
                         };
-                    </script>
-                </div>
+                        reader.readAsDataURL(event.target.files[0]);
+                    };
+                
+                    const restaurantImage = "{{ $restaurant->image }}";
+                    if (restaurantImage) {
+                        const previewContainer = document.querySelector('.preview-container');
+                        const img = document.createElement('img');
+                        img.src = `{{ asset('storage/${restaurantImage}') }}`;
+                        img.width = 150;
+                        previewContainer.innerHTML = ''; // Rimuovi eventuali preview precedenti
+                        previewContainer.appendChild(img);
+                    }
+                </script>
                 {{-- /preview immagine  --}}
+                {{-- checkbox no_image --}}
+                @if ($restaurant->image)
+                    <div class="form-check form-switch my-2">
+                        <input class="form-check-input" name="no_image" type="checkbox" role="switch" id="no_image">
+                        <label class="form-check-label" for="no_image">Rimuovi immagine (verrà applicata un'immagine placeholder)</label>
+                    </div>
+                @endif
+                {{-- /checkbox no_image --}}
                 <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" value="{{ old('image', $restaurant->image) }}" onchange="loadFile(event)">
                 @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+                {{-- script checkbox no_image --}}
+                <script>
+                    const inputCheckbox = document.getElementById('no_image');
+                    const inputFile = document.getElementById('image');
+                    if (inputCheckbox.checked) {
+                        inputFile.disabled = true;
+                    }
+                    inputCheckbox.addEventListener('change', function() {
+                        if (inputCheckbox.checked) {
+                            inputFile.disabled = true;
+                        } else {
+                            inputFile.disabled = false;
+                        }
+                    });
+                </script>
+                {{-- /script checkbox no_image --}}
             </div>
             {{-- campo cucine --}}
             <div class="kitchens-container mb-3">
