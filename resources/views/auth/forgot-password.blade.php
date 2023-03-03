@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('page-title')
+    DeliveBoo | Recupero password
+@endsection
+
 @section('content')
 <div class="container mt-4">
     <div class="row justify-content-center">
