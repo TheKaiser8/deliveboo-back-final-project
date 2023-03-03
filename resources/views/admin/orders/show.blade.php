@@ -13,7 +13,7 @@
                     <h4 class="card-title text-center fw-bold mb-3">ID ordine #{{ $order->id}}</h4>
                     <div class="mb-3">
                         <strong>Totale ordine:</strong> 
-                        <strong class="text-success">{{ $order->total_price . ' €' }}</strong>
+                        <strong class="text-success">{{ number_format($order->total_price, 2, ',') . ' €' }}</strong>
                     </div>
                     <div class="mb-3">
                         <strong>Nome cliente:</strong> {{ $order->name_customer }}
@@ -42,9 +42,9 @@
                             @foreach ($order->products as $product)
                                 <tr class="align-middle">
                                     <td>{{ $product->name }}</td>
-                                    <td class="text-center">{{ $product->price . ' €' }}</td>
+                                    <td class="text-center">{{ number_format($product->price, 2, ',') . ' €' }}</td>
                                     <td class="text-center">{{ $product->pivot->quantity }}</td>
-                                    <td class="text-center">{{ $product->price * ($product->pivot->quantity) . ' €' }}</td>
+                                    <td class="text-center">{{ number_format($product->price * ($product->pivot->quantity), 2, ',') . ' €' }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
