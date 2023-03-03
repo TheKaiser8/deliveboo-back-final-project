@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page-title')
-    Dettagli
+    Dettagli ristorante
 @endsection
 
 @section('content')

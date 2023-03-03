@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('page-title')
-    Ordini 
+    Dettagli ordine
 @endsection
 
 @section('content')
