@@ -26,21 +26,21 @@ class RestaurantSeeder extends Seeder
 
         $restaurants = [
             'La Pergola',
-            'Sora Lella', 
-            'Osteria Francescana', 
-            'Le Calandre', 
-            'Il Ristorante del Borgo', 
-            'La Trattoria da Gino', 
-            'La Taverna del Vecchio Mulino', 
-            'La Pizzeria del Corso', 
-            'La Locanda della Luna', 
+            'Sora Lella',
+            'Osteria Francescana',
+            'Le Calandre',
+            'Il Ristorante del Borgo',
+            'La Trattoria da Gino',
+            'La Taverna del Vecchio Mulino',
+            'La Pizzeria del Corso',
+            'La Locanda della Luna',
             'Sapori d\'Oriente'
         ];
 
-        foreach(User::all() as $key=>$user){
+        foreach (User::all() as $key => $user) {
             $new_restaurant = new Restaurant();
             $new_restaurant->name = $restaurants[$key];
-            $new_restaurant->city = $faker->city();
+            $new_restaurant->city = $faker->state();
             $new_restaurant->street_address = $faker->streetAddress();
             $new_restaurant->postal_code = $faker->postcode();
             $new_restaurant->vat_number = $faker->numerify('###########');
@@ -51,4 +51,3 @@ class RestaurantSeeder extends Seeder
         }
     }
 }
-
