@@ -17,18 +17,6 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // $orders = [];
-        // $restaurant = Auth::user()->restaurant;
-        // foreach (Order::all() as $order) {
-        //     // dd($order);
-        //     $orderRestaurant = $order->products->first()->restaurant_id;
-        //     if ($restaurant->id == $orderRestaurant) {
-        //         array_push($orders, $order);
-        //     }
-        // }
-        // $orders = array_reverse($orders);
-        // return view('admin.orders.index', compact('orders'));
-
         // Recupera il ristorante dell'utente loggato
         $restaurant = Auth::user()->restaurant;
 
@@ -41,6 +29,7 @@ class OrderController extends Controller
             // Ordina gli ordini per data di creazione e per id in ordine decrescente
             ->orderByDesc('created_at')->orderByDesc('id')
             ->get();
+
         return view('admin.orders.index', compact('orders'));
     }
 
@@ -62,7 +51,17 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        //
+        $data = $request->validated();
+        $order = new Order();
+        $order->fill($data);
+        $order->created_at = now();
+        $deliveryDate = session()->get('delivery_date');
+        if (!$deliveryDate) {
+            $deliveryDate = now()->addMinutes(rand(30, 60));
+            session()->put('delivery_date', $deliveryDate);
+        }
+        $order->delivery_date = $deliveryDate;
+        $order->save();
     }
 
     /**
