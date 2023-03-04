@@ -76,6 +76,20 @@ class ProductSeeder extends Seeder
             ['name' => 'Liquore al Cioccolato', 'typology' => 'alcolici', 'image' => 'https://severiniwines.com/pub/media/catalog/product/cache/image/870x1110/e9c3970ab036de70892d86c6d221abfe/b/o/bottega-liquore-al-cioccolato-nero-shop-online-severiniwines.jpg'],
         ];
 
+        /**
+         * Genera un prezzo casuale arrontondato a 0,05.
+         *
+         * @param int $min Il valore minimo per il prezzo.
+         * @param int $max Il valore massimo per il prezzo.
+         *
+         * @return float Il prezzo casuale arrontondato a 0,05.
+         */
+        function generateRandomPrice($min, $max)
+        {
+            $random_price = mt_rand($min * 100, $max * 100); // Genera un numero casuale compreso tra $min e $max, moltiplicando per 100
+            return ceil($random_price / 5) * 0.05; // Arrotonda il valore per eccesso al valore successivo di 0,05
+        }
+
         $max_products_per_restaurant = 10;
 
         foreach (Restaurant::all() as $restaurant) {
@@ -97,37 +111,37 @@ class ProductSeeder extends Seeder
 
                 switch ($product['typology']) {
                     case 'pizza':
-                        $new_product->price = $faker->randomFloat(2, 5, 15);
+                        $new_product->price = generateRandomPrice(5, 15);
                         break;
                     case 'panini':
-                        $new_product->price = $faker->randomFloat(2, 3, 10);
+                        $new_product->price = generateRandomPrice(3, 10);
                         break;
                     case 'pasta':
-                        $new_product->price = $faker->randomFloat(2, 7, 20);
+                        $new_product->price = generateRandomPrice(7, 20);
                         break;
                     case 'contorni':
-                        $new_product->price = $faker->randomFloat(2, 2, 7);
+                        $new_product->price = generateRandomPrice(4, 10);
                         break;
                     case 'insalate':
-                        $new_product->price = $faker->randomFloat(2, 4, 12);
+                        $new_product->price = generateRandomPrice(4, 12);
                         break;
                     case 'pesce':
-                        $new_product->price = $faker->randomFloat(2, 10, 25);
+                        $new_product->price = generateRandomPrice(10, 25);
                         break;
                     case 'sushi':
-                        $new_product->price = $faker->randomFloat(2, 8, 18);
+                        $new_product->price = generateRandomPrice(8, 18);
                         break;
                     case 'secondi':
-                        $new_product->price = $faker->randomFloat(2, 10, 30);
+                        $new_product->price = generateRandomPrice(10, 30);
                         break;
                     case 'bibite':
-                        $new_product->price = $faker->randomFloat(2, 10, 10);
+                        $new_product->price = generateRandomPrice(3, 8);
                         break;
                     case 'alcolici':
-                        $new_product->price = $faker->randomFloat(2, 10, 10);
+                        $new_product->price = generateRandomPrice(5, 10);
                         break;
                     default:
-                        $new_product->price = $faker->randomFloat(2, 5, 15);
+                        $new_product->price = generateRandomPrice(5, 15);
                 }
 
                 $new_product->restaurant_id = $restaurant->id;
