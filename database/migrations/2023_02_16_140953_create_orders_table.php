@@ -19,9 +19,8 @@ return new class extends Migration
             $table->string('address_customer', 150);
             $table->string('email_customer', 100);
             $table->string('phone_number', 30);
-            // $table->dateTime('delivery_date');
-            // $table->dateTime('creation_date');
-            $table->decimal('total_price', 5,2);
+            $table->dateTime('delivery_date');
+            $table->decimal('total_price', 5, 2);
             $table->timestamps();
         });
     }
