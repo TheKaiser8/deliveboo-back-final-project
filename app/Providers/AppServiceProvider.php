@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // rendo disponibile in tutte le views questo formato data
+        view()->share('dateFormat', 'd/m/Y H:i');
     }
 }
