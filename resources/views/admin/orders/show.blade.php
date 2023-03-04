@@ -16,6 +16,20 @@
                         <strong class="text-success">{{ number_format($order->total_price, 2, ',') . ' €' }}</strong>
                     </div>
                     <div class="mb-3">
+                        <strong>Data e ora creazione:</strong>
+                        <strong class="text-success">{{ $order->created_at->format($dateFormat) }}</strong>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Data e ora consegna:</strong> 
+                        <strong class="text-danger">{{ \Carbon\Carbon::parse($order->delivery_date)->format($dateFormat) }}</strong>
+                    </div>
+                    {{-- campo consegna in cui vengono creati badge diversi a seconda dei tempi di consegna --}}
+                    <div class="mb-3">
+                        <strong>Tempo di consegna:</strong> 
+                        <span class="badge fs-6 @if($order->created_at->diffInMinutes($order->delivery_date) < 40) text-bg-success @elseif($order->created_at->diffInMinutes($order->delivery_date) < 50) text-bg-warning @else text-bg-danger @endif">{{ $order->created_at->diffInMinutes($order->delivery_date) . ' minuti' }}</span>
+                    </div>
+                    {{-- /campo consegna in cui vengono creati badge diversi a seconda dei tempi di consegna --}}
+                    <div class="mb-3">
                         <strong>Nome cliente:</strong> {{ $order->name_customer }}
                     </div>
                     <div class="mb-3">
