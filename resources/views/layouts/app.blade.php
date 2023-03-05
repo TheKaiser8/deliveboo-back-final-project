@@ -50,10 +50,10 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <button class="ms-0 btn-blue-white"><a  href="{{env('APP_FRONTEND_URL')}}">{{ __('Ordina') }}</a></button>
+                            <button class="ms-0 btn-blue-white mb-2"><a  href="{{env('APP_FRONTEND_URL')}}">{{ __('Ordina') }}</a></button>
                         </li>
                         <li class="nav-item">
-                            <button class="ms-0 btn-blue-white"><a href="{{ route('login') }}">{{ __('Accedi') }}</a></button>
+                            <button class="ms-0 btn-blue-white mb-2"><a href="{{ route('login') }}">{{ __('Accedi') }}</a></button>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
