@@ -90,7 +90,7 @@ class ProductSeeder extends Seeder
             return ceil($random_price / 5) * 0.05; // Arrotonda il valore per eccesso al valore successivo di 0,05
         }
 
-        $max_products_per_restaurant = 10;
+        $max_products_per_restaurant = 30;
 
         foreach (Restaurant::all() as $restaurant) {
             $products_added = 0;
@@ -103,7 +103,6 @@ class ProductSeeder extends Seeder
 
                 $new_product = new Product();
                 $new_product->name = $product['name'];
-                $new_product->is_available = $faker->numberBetween(0, 1);
                 $new_product->image = $product['image'];
                 $new_product->typology = $product['typology'];
                 $new_product->description = $faker->paragraph(2);
@@ -145,6 +144,9 @@ class ProductSeeder extends Seeder
                 }
 
                 $new_product->restaurant_id = $restaurant->id;
+
+                $is_available = (mt_rand(0, 99) < 30) ? 0 : 1; // 30% di prodotti non disponibili
+                $new_product->is_available = $is_available;
                 $new_product->save();
                 $products_added++;
             }
