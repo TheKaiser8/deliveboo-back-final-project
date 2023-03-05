@@ -138,7 +138,8 @@ class RestaurantController extends Controller
         // controllo che verifica se viene settata la checkbox per NON caricare alcuna immagine in fase di modifica del ristorante
         if (isset($data['no_image']) && $restaurant->image) {
             Storage::disk('public')->delete($restaurant->image);
-            $restaurant->image = null;
+            $restaurant_placeholder = Restaurant::$restaurantPlaceholderUrl;
+            $restaurant->image = $restaurant_placeholder;
         }
 
         $restaurant->update($data);
