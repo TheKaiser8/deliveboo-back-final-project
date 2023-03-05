@@ -25,26 +25,26 @@ class RestaurantSeeder extends Seeder
         Schema::enableForeignKeyConstraints();
 
         $restaurants = [
-            'La Pergola',
-            'Sora Lella',
-            'Osteria Francescana',
-            'Le Calandre',
-            'Il Ristorante del Borgo',
-            'La Trattoria da Gino',
-            'La Taverna del Vecchio Mulino',
-            'La Pizzeria del Corso',
-            'La Locanda della Luna',
-            'Sapori d\'Oriente'
+            'La Pergola' => 'https://www.projectinvictus.it/wp-content/uploads/2022/08/junk-food-scaled.jpg',
+            'Sora Lella' => 'https://www.yegam.it/wp-content/uploads/2019/05/yegam-blog-slow-food.jpg',
+            'Osteria Francescana' => 'https://ichef.bbci.co.uk//food/ic/food_16x9_832/recipes/crispy_smashed_potatoes_70636_16x9.jpg',
+            'Le Calandre' => 'https://tb-static.uber.com/prod/image-proc/processed_images/91e744b222ecac52cfaf1f15cd79eadc/69ad85cd7b39888042b3bbf1c22d630d.webp',
+            'Il Ristorante del Borgo' => 'https://www.fabriziocostantini.it/images/food-digital.jpg',
+            'La Trattoria da Gino' => 'https://www.torinotoday.it/~media/horizontal-hi/50984033489356/cibo_osteria_pexels-2.jpg',
+            'La Taverna del Vecchio Mulino' => 'https://media.suara.com/pictures/653x366/2021/08/02/81387-ilustrasi-makanan-cepat-saji-freepik.jpg',
+            'La Pizzeria del Corso' => 'https://media-cdn.tripadvisor.com/media/photo-s/1b/59/24/ba/pizza.jpg',
+            'La Locanda della Luna' => 'https://media.gqitalia.it/photos/60105cb52ff22977eb9ae86e/16:9/w_1280,c_limit/Ritorno%20dei%20Climatariani_Pinterest%20(sustainablefood).jpg',
+            'Sapori d\'Oriente' => 'http://static1.squarespace.com/static/53b839afe4b07ea978436183/53bbeeb2e4b095b6a428a13e/5fd2570b51740e23cce97919/1676678395594/traditional-food-around-the-world-Travlinmad.jpg?format=1500w'
         ];
 
         foreach (User::all() as $key => $user) {
             $new_restaurant = new Restaurant();
-            $new_restaurant->name = $restaurants[$key];
+            $new_restaurant->name = array_keys($restaurants)[$key];
             $new_restaurant->city = $faker->state();
             $new_restaurant->street_address = $faker->streetAddress();
             $new_restaurant->postal_code = $faker->postcode();
             $new_restaurant->vat_number = $faker->numerify('###########');
-            $new_restaurant->image = 'https://www.ilborghista.it/immaginiutente/attivita_foto/300_m_32915-ath0q9p5q6b3m7b3b8p7x9k3x4v9q4k5b5w3l1z1d6k5q1g6p3k7.jpg?a=9192';
+            $new_restaurant->image = $restaurants[$new_restaurant->name];
             $new_restaurant->user_id = $user->id;
             $new_restaurant->slug = Str::slug($new_restaurant->name . '-' . $new_restaurant->city . '-' . $new_restaurant->postal_code);
             $new_restaurant->save();
