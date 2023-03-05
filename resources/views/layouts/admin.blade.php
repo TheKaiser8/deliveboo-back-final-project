@@ -55,21 +55,23 @@
         </a>
           
         @else
-          <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.restaurants.create') }}" 
-            >DeliveBoo</a
-          >
+        <a class="navbar-brand d-flex align-items-center" href="{{route('admin.restaurants.create')}}">
+          <div class="d-flex logo">
+              <img class="d-md-block d-none" src="{{Vite::asset('resources/assets/images/Deliveroo-Logo-final.png')}}" alt="logo">
+              <h1>DeliveBoo</h1>
+          </div>
+        </a>
         @endif
         
           <div class="navbar-nav">
             <div class="nav-item text-nowrap ms-2">
-              <a
-                class="nav-link"
+              <button class="ms-0 btn-blue-white"><a
                 href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();"
               >
                 {{ __('Logout') }}
-              </a>
+              </a></button>
               <form
                 id="logout-form"
                 action="{{ route('logout') }}"
