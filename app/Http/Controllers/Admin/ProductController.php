@@ -122,8 +122,6 @@ class ProductController extends Controller
         $data = $request->validated();
         $old_name = $product->name;
 
-        // $product->slug = Str::slug($data['name'], '-');
-
         if (isset($data['image'])) {
             // controllo che verifica se è presente l'immagine e la cancella di default se già inserita
             if ($product->image) {
@@ -133,10 +131,9 @@ class ProductController extends Controller
         }
 
         // controllo che verifica se viene settata la checkbox per NON caricare alcuna immagine in fase di modifica del progetto
-        // if (isset($data['no_image']) && $product->image) {
-        //     Storage::disk('public')->delete($product->image);
-        //     $product->image = null;
-        // }
+        if (isset($data['no_image']) && $product->image) {
+            Storage::disk('public')->delete($product->image);
+        }
 
         $product->update($data);
 
