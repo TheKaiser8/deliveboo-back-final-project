@@ -35,7 +35,7 @@
                             @else
                                 <td class="text-danger">Non disponibile</td>
                             @endif
-                            <td>{{ $product->price . '€'}}</td>
+                            <td>{{ number_format($product->price, 2, ',') . ' €'}}</td>
                             <td>
                                 <a href="{{ route('admin.products.show', $product) }}" class="btn btn-outline-info ms-white-hover my-1"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-outline-warning ms-white-hover my-1"><i class="fa-solid fa-pen-to-square"></i></a>

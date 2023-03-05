@@ -53,7 +53,7 @@
                     </p>
                     <div>
                         <strong>Prezzo:</strong>
-                        {{ $product->price . '€' }}
+                        {{ number_format($product->price, 2, ',') . ' €' }}
                     </div>
                 </div>
                 <div class="text-center bg-light rounded-bottom pb-3">
