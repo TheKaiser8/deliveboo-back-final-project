@@ -24,11 +24,9 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
+<body class="overflow-hidden">
     <div id="app">
-
-
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-welcome navbar-expand-md navbar-dark bg-dark shadow-sm position-absolute w-100">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ env('APP_FRONTEND_URL') }}">
                     <div class="d-flex logo">
@@ -52,14 +50,14 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{env('APP_FRONTEND_URL')}}">{{ __('Home') }}</a>
+                            <button class="ms-0 btn-blue-white"><a  href="{{env('APP_FRONTEND_URL')}}">{{ __('Ordina') }}</a></button>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
+                            <button class="ms-0 btn-blue-white"><a href="{{ route('login') }}">{{ __('Accedi') }}</a></button>
                         </li>
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
+                            <button class="ms-0 btn-blue-white"><a href="{{ route('register') }}">{{ __('Registrati') }}</a></button>
                         </li>
                         @endif
                         @else
