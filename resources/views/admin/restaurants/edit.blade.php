@@ -62,7 +62,7 @@
                 {{-- preview immagine --}}
                 <script>
                     const previewContainer = document.querySelector('.preview-container');
-                    // Funzione loadFile per caricare e visualizzare l'immagine di anteprima quando l'utente inserisce seleziona un nuovo file immagine da caricare
+                    // Funzione loadFile per caricare e visualizzare l'immagine di anteprima quando l'utente inserisce un nuovo file immagine da caricare
                     const loadFile = function(event) {
                         const reader = new FileReader();
                         reader.onload = function() {

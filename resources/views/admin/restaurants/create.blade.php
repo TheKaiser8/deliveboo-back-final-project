@@ -64,7 +64,7 @@
                 {{-- preview immagine --}}
                 <script>
                     const previewContainer = document.querySelector('.preview-container');
-                    // Funzione loadFile per caricare e visualizzare l'immagine di anteprima quando l'utente inserisce seleziona un nuovo file immagine da caricare
+                    // Funzione loadFile per caricare e visualizzare l'immagine di anteprima quando l'utente inserisce un file immagine da caricare
                     const loadFile = function(event) {
                         const reader = new FileReader();
                         reader.onload = function() {
@@ -73,7 +73,6 @@
                             img.classList.add('mb-3');
                             img.src = reader.result;
                             img.width = 150;
-                            previewContainer.innerHTML = ''; // Rimuovi eventuali preview precedenti
                             previewContainer.appendChild(img);
                         };
                         reader.readAsDataURL(event.target.files[0]);
