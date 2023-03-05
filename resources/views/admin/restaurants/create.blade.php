@@ -59,21 +59,26 @@
             </div>
             {{-- campo immagine --}}
             <div class="mb-3">
-                <label for="image" class="form-label fw-semibold mb-0">Copertina ristorante</label> 
-                {{-- image preview --}}
-                <div class="ms-lh-0">
-                    <img id="output" width="150" class="my-2"/>
-                    <script>
-                        let loadFile = function(event) {
-                            let reader = new FileReader();
-                            reader.onload = function(){
-                            let output = document.getElementById('output');
-                            output.src = reader.result;
-                            };
-                            reader.readAsDataURL(event.target.files[0]);
+                <label for="image" class="form-label fw-semibold">Copertina ristorante</label> 
+                <div class="preview-container"></div>
+                {{-- preview immagine --}}
+                <script>
+                    const previewContainer = document.querySelector('.preview-container');
+                    // Funzione loadFile per caricare e visualizzare l'immagine di anteprima quando l'utente inserisce seleziona un nuovo file immagine da caricare
+                    const loadFile = function(event) {
+                        const reader = new FileReader();
+                        reader.onload = function() {
+                            const label = document.querySelector('label[for="image"]');
+                            const img = document.createElement('img');
+                            img.classList.add('mb-3');
+                            img.src = reader.result;
+                            img.width = 150;
+                            previewContainer.innerHTML = ''; // Rimuovi eventuali preview precedenti
+                            previewContainer.appendChild(img);
                         };
-                    </script>
-                </div>
+                        reader.readAsDataURL(event.target.files[0]);
+                    };
+                </script>
                 {{-- /preview immagine  --}}
                 <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" value="{{old('image')}}" onchange="loadFile(event)">
                 @error('image')
