@@ -36,7 +36,7 @@
                         <div>
                             <strong>Cucina/e:</strong> 
                             @foreach($restaurant->kitchens as $kitchen)
-                                <span class="badge text-bg-primary ms-1">{{ $kitchen->name }}</span>
+                                <span class="badge ms-text-bg-primary ms-1">{{ $kitchen->name }}</span>
                             @endforeach
                         </div>
                     </div>   
@@ -73,9 +73,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
-        
     </div>
-    
 @endsection
