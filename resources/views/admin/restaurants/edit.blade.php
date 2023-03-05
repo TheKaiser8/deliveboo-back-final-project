@@ -61,11 +61,12 @@
                 <div class="preview-container"></div>
                 {{-- preview immagine --}}
                 <script>
+                    const previewContainer = document.querySelector('.preview-container');
+                    // Funzione loadFile per caricare e visualizzare l'immagine di anteprima quando l'utente inserisce seleziona un nuovo file immagine da caricare
                     const loadFile = function(event) {
                         const reader = new FileReader();
                         reader.onload = function() {
                             const label = document.querySelector('label[for="image"]');
-                            const previewContainer = document.querySelector('.preview-container');
                             const img = document.createElement('img');
                             img.classList.add('mb-3');
                             img.src = reader.result;
@@ -76,9 +77,9 @@
                         reader.readAsDataURL(event.target.files[0]);
                     };
                 
+                    // Controllo se è presente un'immagine di anteprima predefinita del ristorante, se è presente mostra la preview immagine al caricamento della pagina
                     const restaurantImage = "{{ $restaurant->image }}";
-                    if (restaurantImage) {
-                        const previewContainer = document.querySelector('.preview-container');
+                    if (restaurantImage && !restaurantImage.startsWith('http')) {
                         const img = document.createElement('img');
                         img.src = `{{ asset('storage/${restaurantImage}') }}`;
                         img.width = 150;
@@ -88,7 +89,7 @@
                 </script>
                 {{-- /preview immagine  --}}
                 {{-- checkbox no_image --}}
-                @if ($restaurant->image)
+                @if ($restaurant->image && !Str::startsWith($restaurant->image, 'http'))
                     <div class="form-check form-switch my-2">
                         <input class="form-check-input" name="no_image" type="checkbox" role="switch" id="no_image">
                         <label class="form-check-label" for="no_image">Rimuovi immagine (verrà applicata un'immagine placeholder)</label>
