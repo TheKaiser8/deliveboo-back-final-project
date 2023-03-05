@@ -15,7 +15,7 @@
         @if(count($products) < 1)
             <h2 class="text-center text-white ms-bg-title rounded py-5 mb-3">Crea i prodotti del tuo ristorante per visualizzare il tuo menù!</h2> 
         @else
-            <table class="ms-table table table-striped">
+            <table class="ms-table table table-striped table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">Nome</th>

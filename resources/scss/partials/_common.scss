@@ -19,3 +19,51 @@
     max-height: 400px;
     object-fit: contain;
 }
+
+.logo{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    margin:0;
+    align-items: center;
+
+    h1{
+        width: 80%;
+        color: #00b8a8;
+        font-family: 'Tilt Neon', cursive;
+        font-weight: 600;
+    }
+
+    img{
+        height: 70px;
+        width: 100%;
+        object-fit:cover;
+    }
+}
+
+.welcome-logo{
+    width: 300px;
+    height: 100%;
+    display: flex;
+    margin:0;
+    align-items: center;
+
+    h1{
+        width: 80%;
+        color: #00b8a8;
+        font-family: 'Tilt Neon', cursive;
+        font-weight: 600;
+    }
+
+    img{
+        height: 200px;
+        width: 100%;
+        object-fit:cover;
+    }
+}
+
+@media screen and (max-width:768px){
+    .aside{
+        height: 0 !important;
+    }
+}

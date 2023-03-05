@@ -36,7 +36,7 @@
         class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap justify-content-between p-2 shadow"
       >
         <button
-          class="navbar-toggler position-absolute d-md-none collapsed"
+          class="navbar-toggler d-md-none collapsed"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#sidebarMenu"
@@ -47,11 +47,15 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         @if( Auth::user()->restaurant )
-          <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="http://127.0.0.1:8000/admin/backoffice-to-frontoffice"
-            >DeliveBoo</a
-          >
+        <a class="navbar-brand d-flex align-items-center" href="{{ env('APP_FRONTEND_URL') }}">
+          <div class="d-flex logo">
+              <img class="d-md-block d-none" src="{{Vite::asset('resources/assets/images/Deliveroo-Logo-final.png')}}" alt="logo">
+              <h1>DeliveBoo</h1>
+          </div>
+        </a>
+          
         @else
-          <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.restaurants.create') }}"
+          <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.restaurants.create') }}" 
             >DeliveBoo</a
           >
         @endif
@@ -79,18 +83,18 @@
       </header>
 
       <div class="container-fluid vh-100">
-        <div class="row h-100">
+        <div class="row aside h-100 d-flex">
           <nav
             id="sidebarMenu"
-            class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse"
+            class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse" 
           >
             <div class="position-sticky pt-3">
-              <ul class="nav flex-column">
+              <ul class="nav flex-column pb-3">
                 {{-- restaurant button --}}
                 @if( Auth::user()->restaurant )
-                  <li class="nav-item">
+                  <li class="nav-item px-0">
                     <a
-                      class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.restaurants') ? 'bg-secondary' : '' }}"
+                      class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.restaurants') ? 'bg-secondary' : '' }}" style="min-width:170px"
                       href="{{route('admin.restaurants.show', Auth::user()->restaurant)}}"
                     >
                       <i class="fa-solid fa-utensils fa-lg fa-fw"></i>
@@ -122,19 +126,9 @@
                     </a>
                   </li>
                 @endif
-                {{-- <li class="nav-item">
-                  <a
-                    class="nav-link text-white {{ str_contains(Route::currentRouteName(), 'admin.stats') ? 'bg-secondary' : '' }}"
-                    href="{{route('admin.stats.index')}}"
-                  >
-                    <i class="fa-solid fa-chart-line fa-lg fa-fw"></i>
-                    Statistiche
-                  </a>
-                </li> --}}
               </ul>
             </div>
           </nav>
-
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             @yield('content')
           </main>
