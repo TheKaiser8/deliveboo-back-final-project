@@ -77,20 +77,33 @@
                         reader.readAsDataURL(event.target.files[0]);
                     };
                 
+                    // Funzione per generare un elemento immagine
+                    function createImageElement(src, width) {
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.width = width;
+                        img.classList.add('mb-2');
+                        return img;
+                    }
+
                     // Controllo se è presente un'immagine di anteprima predefinita del ristorante, se è presente mostra la preview immagine al caricamento della pagina
                     const restaurantImage = "{{ $restaurant->image }}";
-                    if (restaurantImage && !restaurantImage.startsWith('http')) {
-                        const img = document.createElement('img');
-                        img.src = `{{ asset('storage/${restaurantImage}') }}`;
-                        img.width = 150;
-                        previewContainer.innerHTML = ''; // Rimuovi eventuali preview precedenti
-                        previewContainer.appendChild(img);
+                    if (restaurantImage) {
+                        if (restaurantImage.startsWith('http') && restaurantImage != 'https://www.ilborghista.it/immaginiutente/attivita_foto/300_m_32915-ath0q9p5q6b3m7b3b8p7x9k3x4v9q4k5b5w3l1z1d6k5q1g6p3k7.jpg?a=9192') {
+                            const img = createImageElement(restaurantImage, 150);
+                            previewContainer.innerHTML = ''; // Rimuovi eventuali preview precedenti
+                            previewContainer.appendChild(img);
+                        } else if (restaurantImage != 'https://www.ilborghista.it/immaginiutente/attivita_foto/300_m_32915-ath0q9p5q6b3m7b3b8p7x9k3x4v9q4k5b5w3l1z1d6k5q1g6p3k7.jpg?a=9192') {
+                            const img = createImageElement(`{{ asset('storage/${restaurantImage}') }}`, 150);
+                            previewContainer.innerHTML = ''; // Rimuovi eventuali preview precedenti
+                            previewContainer.appendChild(img);
+                        }
                     }
                 </script>
                 {{-- /preview immagine  --}}
                 {{-- checkbox no_image --}}
-                @if ($restaurant->image && !Str::startsWith($restaurant->image, 'http'))
-                    <div class="form-check form-switch my-2">
+                @if ($restaurant->image != 'https://www.ilborghista.it/immaginiutente/attivita_foto/300_m_32915-ath0q9p5q6b3m7b3b8p7x9k3x4v9q4k5b5w3l1z1d6k5q1g6p3k7.jpg?a=9192')
+                    <div class="form-check form-switch mb-2">
                         <input class="form-check-input" name="no_image" type="checkbox" role="switch" id="no_image">
                         <label class="form-check-label" for="no_image">Rimuovi immagine (verrà applicata un'immagine placeholder)</label>
                     </div>
