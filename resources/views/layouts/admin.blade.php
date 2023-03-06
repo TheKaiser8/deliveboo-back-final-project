@@ -66,6 +66,11 @@
           <div class="navbar-nav">
             <div class="nav-item text-nowrap ms-2">
               <button class="ms-0 btn-blue-white"><a
+                href="{{ 'http://127.0.0.1:8000/admin/backoffice-to-frontoffice' }}"
+              >
+                {{ __('Ordina') }}
+              </a></button>
+              <button class="ms-0 btn-blue-white"><a
                 href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();"
