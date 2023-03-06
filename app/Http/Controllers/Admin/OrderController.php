@@ -84,7 +84,7 @@ class OrderController extends Controller
         if ($order->products->where('restaurant_id', $restaurant->id)->isEmpty()) {
             // Se l'ordine non appartiene al ristorante dell'utente loggato, reindirizza all'URL precedente
             $url = url()->previous();
-            return redirect($url);
+            return redirect($url)->with('warning', "La pagina non è accessibile, sei stato reindirizzato alla pagina precedente!");
         }
 
         return view('admin.orders.show', compact('order'));

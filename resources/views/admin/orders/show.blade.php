@@ -7,6 +7,9 @@
 @section('content')
     <div class="container d-flex flex-column align-items-center py-4">
         <h2 class="fw-semibold text-center mb-4">Dettagli ordine</h2>
+        <div class="w-100">
+            @include('partials.message')
+        </div>
         <div class="card w-75 rounded-top">
             <div class="card-body">
                 <div class="bg-light rounded-top p-3">
