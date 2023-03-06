@@ -9,7 +9,7 @@
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card-access-form card">
+            <div class="card-access-form card p-3">
                 <div class="card-header bg-transparent"><strong class="fs-5 welcome-title">{{ __('Login') }}</strong></div>
 
                 <div class="card-body">
