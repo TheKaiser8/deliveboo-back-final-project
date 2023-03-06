@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
             ['name' => 'Cheeseburger', 'typology' => 'panini', 'image' => 'https://imagesvc.meredithcorp.io/v3/mm/image?q=60&c=sc&poi=face&w=750&h=375&url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd51%2Fburger-lettuce-tomato-pickle-cheese-06167-102941304%2Fburger-lettuce-tomato-pickle-cheese-06167-102941304_horiz.jpg%3Fitok%3DRijLVxLi'],
             ['name' => 'Lasagne', 'typology' => 'pasta', 'image' => 'https://wips.plug.it/cips/buonissimo.org/cms/2011/12/lasagne-al-forno-alla-ferrarese.jpg'],
             ['name' => 'Polenta', 'typology' => 'contorni', 'image' => 'https://cdn.ilclubdellericette.it/wp-content/uploads/2017/06/polenta-790x500.jpg'],
-            ['name' => 'Calzone farcito', 'typology' => 'pizza', 'image' => 'https://www.buttalapasta.it/wp-content/uploads/calzone-farcito1.jpg'],
+            ['name' => 'Calzone farcito', 'typology' => 'pizza', 'image' => 'https://www.misya.info/wp-content/uploads/2013/03/calzone-napoletano.jpg'],
             ['name' => 'Insalata di pollo', 'typology' => 'insalate', 'image' => 'https://www.cucchiaio.it/content/cucchiaio/it/ricette/2019/06/insalata-di-pollo/_jcr_content/header-par/image-single.img.jpg/1560261890876.jpg'],
             ['name' => 'Pizza capricciosa', 'typology' => 'pizza', 'image' => 'https://i0.wp.com/www.piccolericette.net/piccolericette/wp-content/uploads/2017/12/3240_Pizza.jpg?resize=895%2C616&ssl=1'],
             ['name' => 'Sgombro al forno', 'typology' => 'pesce', 'image' => 'https://images.fidhouse.com/fidelitynews/wp-content/uploads/sites/6/2017/10/1508853359_23c674c09f2ce225dae8ba406b91bb34a0626af9-1508852927.jpg?w=580'],
