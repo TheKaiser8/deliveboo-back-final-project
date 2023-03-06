@@ -87,7 +87,7 @@ class ProductController extends Controller
         $user = Auth::id();
         $url = url()->previous();
         if ($product->restaurant->user_id != $user) {
-            return redirect($url);
+            return redirect($url)->with('warning', "La pagina non è accessibile, sei stato reindirizzato alla pagina precedente!");
         }
 
         return view('admin.products.show', compact('product'));
@@ -104,7 +104,7 @@ class ProductController extends Controller
         $user = Auth::id();
         $url = url()->previous();
         if ($product->restaurant->user_id != $user) {
-            return redirect($url);
+            return redirect($url)->with('warning', "La pagina non è accessibile, sei stato reindirizzato alla pagina precedente!");
         }
         $typologies = DB::table('products')->select('typology')->distinct()->get();
         return view('admin.products.edit', compact('product', 'typologies'));
