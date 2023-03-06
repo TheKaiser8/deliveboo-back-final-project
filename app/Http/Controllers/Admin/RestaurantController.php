@@ -88,7 +88,7 @@ class RestaurantController extends Controller
             return redirect()->route('admin.restaurants.create');
         } elseif (Auth::user()->restaurant != $restaurant) {
             $url = url()->previous();
-            return redirect($url);
+            return redirect($url)->with('warning', "La pagina non è accessibile, sei stato reindirizzato alla pagina precedente!");
         }
         return view('admin.restaurants.show', compact('restaurant'));
     }
@@ -104,7 +104,7 @@ class RestaurantController extends Controller
         $user = Auth::id();
         $url = url()->previous();
         if ($restaurant->user_id != $user) {
-            return redirect($url);
+            return redirect($url)->with('warning', "La pagina non è accessibile, sei stato reindirizzato alla pagina precedente!");
         }
 
         $kitchens = Kitchen::all();

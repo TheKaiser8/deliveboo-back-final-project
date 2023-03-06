@@ -7,6 +7,9 @@
 @section('content')
     <div class="container py-4">
         <h2 class="fw-semibold text-center mb-4">Modifica "{{ $restaurant->name }}"</h2>
+        <div class="w-100">
+            @include('partials.message')
+        </div>
         {{-- form di modifica ristorante --}}
         <form action="{{ route('admin.restaurants.update', $restaurant) }}" id="myForm" method="POST" enctype="multipart/form-data" class="mb-5">
         @csrf
