@@ -48,10 +48,10 @@
         </button>
         @if( Auth::user()->restaurant )
         <a class="navbar-brand d-flex align-items-center" href="{{ 'http://127.0.0.1:8000/admin/backoffice-to-frontoffice'}}">
-          <div class="d-flex logo">
+          <div class="logo">
               <img class="d-md-block d-none" src="{{Vite::asset('resources/assets/images/Deliveroo-Logo-final.png')}}" alt="logo">
-              <h1>DeliveBoo</h1>
           </div>
+          <h1 class="logo-title">DeliveBoo</h1>
         </a>
           
         @else

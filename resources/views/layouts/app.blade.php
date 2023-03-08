@@ -29,10 +29,10 @@
         <nav class="navbar navbar-welcome navbar-expand-md navbar-dark bg-dark shadow-sm position-absolute w-100">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ env('APP_FRONTEND_URL') }}">
-                    <div class="d-flex logo">
+                    <div class="logo">
                         <img src="{{Vite::asset('resources/assets/images/Deliveroo-Logo-final.png')}}" alt="logo">
-                        <h1>DeliveBoo</h1>
                     </div>
+                    <h1 class="logo-title">DeliveBoo</h1>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
